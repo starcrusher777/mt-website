@@ -1,0 +1,6 @@
+@MerchTrade_HostAddress = http://localhost:5202/swagger/index.html
+
+GET {{MerchTrade_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
