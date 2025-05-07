@@ -20,7 +20,293 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #f5f7ff, #ffeefc);
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #2c2c2c;
 }
+
+/* Главная страница */
+.homepage {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Заголовок */
+.homepage-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #5d3fd3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Сетка заказов */
+.order-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Карточка заказа */
+.order-card {
+  background-color: #ffffffcc;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Изображение товара */
+.order-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+/* Название заказа */
+.order-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem 0.25rem;
+  color: #2e2e7d;
+}
+
+/* Название предмета */
+.order-item-name {
+  padding: 0 1rem;
+  color: #6b7280;
+}
+
+/* Цена */
+.order-price {
+  padding: 0 1rem 1rem;
+  font-weight: bold;
+  color: #38b000;
+}
+
+/* Группа кнопок */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Аниме-стиль кнопок */
+.anime-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.anime-button.blue {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.anime-button.green {
+  background-color: #10b981;
+  color: white;
+}
+
+.anime-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f0f0ff, #f9f9ff);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-title {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: #3b3b92;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cfcffb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: 0.2s ease;
+  background-color: #fff;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #7f7fd5;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(127, 127, 213, 0.2);
+}
+
+.form-button {
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.form-button:hover {
+  background: linear-gradient(to right, #6a6ad3, #759be7, #85dedc);
+  transform: scale(1.03);
+}
+
+.ad-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #fefefe, #f5f6ff);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.ad-swiper {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.ad-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.ad-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #2e2e7d;
+}
+
+.ad-description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.ad-price {
+  font-size: 1.5rem;
+  color: #2fb170;
+  font-weight: bold;
+}
+
+.ad-loading {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  color: #888;
+}
+
+.ads-page-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+/* Ссылки без подчеркивания и с плавным эффектом */
+.ad-card-link {
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.ad-card-link:hover {
+  transform: translateY(-4px);
+}
+
+.ad-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ad-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.ad-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.ad-card-content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ad-card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2e2e7d;
+  margin-bottom: 0.5rem;
+}
+
+.ad-card-description {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.ad-card-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2fb170;
+}
+

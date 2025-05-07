@@ -19,13 +19,12 @@ export default function CreateNew() {
         formData.append('Item.Description', description);
         formData.append('Item.Price', price);
         formData.append('Item.Quantity', '1');
-        
+
         if (images) {
             Array.from(images).forEach((file) => {
                 formData.append('Images', file);
             });
         }
-        
 
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Order/CreateOrder`, {
@@ -48,22 +47,22 @@ export default function CreateNew() {
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6">
-            <h1 className="text-2xl font-bold mb-4">Создать объявление</h1>
-            <form onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
+        <div className="form-container">
+            <h1 className="form-title">Создать объявление</h1>
+            <form onSubmit={handleSubmit} className="form" encType="multipart/form-data">
                 <input
                     type="text"
                     placeholder="Название"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full border px-4 py-2 rounded"
+                    className="form-input"
                     required
                 />
                 <textarea
                     placeholder="Описание"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full border px-4 py-2 rounded"
+                    className="form-textarea"
                     required
                 />
                 <input
@@ -71,7 +70,7 @@ export default function CreateNew() {
                     placeholder="Цена"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                    className="w-full border px-4 py-2 rounded"
+                    className="form-input"
                     required
                 />
                 <input
@@ -79,13 +78,10 @@ export default function CreateNew() {
                     multiple
                     accept="image/*"
                     onChange={(e) => setImages(e.target.files)}
-                    className="w-full border px-4 py-2 rounded"
+                    className="form-input"
                     required
                 />
-                <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-                >
+                <button type="submit" className="form-button">
                     Создать
                 </button>
             </form>

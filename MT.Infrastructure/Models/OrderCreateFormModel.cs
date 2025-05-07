@@ -11,5 +11,5 @@ public class OrderCreateFormModel : BaseModel
 
     public ItemCreateFormModel Item { get; set; }
 
-    public IFormFile[]? Images { get; set; } // новые изображения
+    public IFormFile[]? Images { get; set; }
 }

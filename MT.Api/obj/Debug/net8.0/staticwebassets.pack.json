@@ -1,6 +1,14 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\0c37adf8-41b0-4eb9-bd08-91f34995ccbe_24_Zl2pkMTQ.jpg",
+      "PackagePath": "staticwebassets\\images\\0c37adf8-41b0-4eb9-bd08-91f34995ccbe_24_Zl2pkMTQ.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\10d4c00a-c7cc-476f-a238-0a12438e822d_photo_2025-04-28_13-17-09.jpg",
+      "PackagePath": "staticwebassets\\images\\10d4c00a-c7cc-476f-a238-0a12438e822d_photo_2025-04-28_13-17-09.jpg"
+    },
+    {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\16c0c5c7-7201-492c-9fc5-823d7920be22_agression.jpg",
       "PackagePath": "staticwebassets\\images\\16c0c5c7-7201-492c-9fc5-823d7920be22_agression.jpg"
     },
@@ -9,16 +17,52 @@
       "PackagePath": "staticwebassets\\images\\1fbdfb60-d579-4236-a33d-944ad348bf31_7u4jku45-EU.jpg"
     },
     {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\250d89d6-6172-4f14-ae49-486a9a2621ca_photo_2025-04-28_13-17-08.jpg",
+      "PackagePath": "staticwebassets\\images\\250d89d6-6172-4f14-ae49-486a9a2621ca_photo_2025-04-28_13-17-08.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\29df898f-1c63-4fdb-8a06-7b49bca831be_0710ff297ed75bb620122a79245bbe7d.png",
+      "PackagePath": "staticwebassets\\images\\29df898f-1c63-4fdb-8a06-7b49bca831be_0710ff297ed75bb620122a79245bbe7d.png"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\34777b05-0473-496a-a64b-5af44a11fd46_0710ff297ed75bb620122a79245bbe7d.png",
+      "PackagePath": "staticwebassets\\images\\34777b05-0473-496a-a64b-5af44a11fd46_0710ff297ed75bb620122a79245bbe7d.png"
+    },
+    {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\41bc2551-2cfe-4b5e-8fd5-cf5d22210c82_CU5b-NvGfRc.jpg",
       "PackagePath": "staticwebassets\\images\\41bc2551-2cfe-4b5e-8fd5-cf5d22210c82_CU5b-NvGfRc.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\420a6276-2df9-4a39-9465-cbc111df4da8_photo_2025-04-28_13-17-07.jpg",
+      "PackagePath": "staticwebassets\\images\\420a6276-2df9-4a39-9465-cbc111df4da8_photo_2025-04-28_13-17-07.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\42486e9f-4fb0-4948-87c1-f24e2e27fe3a_photo_2025-04-28_13-17-10.jpg",
+      "PackagePath": "staticwebassets\\images\\42486e9f-4fb0-4948-87c1-f24e2e27fe3a_photo_2025-04-28_13-17-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\50b16d2e-7b84-4dc4-9b04-b8f3859a2b6e_4e196159df5070308c417aaffa64d409.jpg",
+      "PackagePath": "staticwebassets\\images\\50b16d2e-7b84-4dc4-9b04-b8f3859a2b6e_4e196159df5070308c417aaffa64d409.jpg"
     },
     {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\5fcf5318-bad4-4c21-b358-2f2128020baa_7u4jku45-EU.jpg",
       "PackagePath": "staticwebassets\\images\\5fcf5318-bad4-4c21-b358-2f2128020baa_7u4jku45-EU.jpg"
     },
     {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\6851c2c0-1fd3-4b84-8a29-a29bbcc0e74a_1244_white_widow_auto_fem_2_2.jpg",
+      "PackagePath": "staticwebassets\\images\\6851c2c0-1fd3-4b84-8a29-a29bbcc0e74a_1244_white_widow_auto_fem_2_2.jpg"
+    },
+    {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\70f6928f-44d2-44e9-8ef5-d902b5c67b6d_8JPKaKTzsE8.jpg",
       "PackagePath": "staticwebassets\\images\\70f6928f-44d2-44e9-8ef5-d902b5c67b6d_8JPKaKTzsE8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\77aa6bb8-9bdc-49db-a405-43204cf8a7c3_42434B4B-1320-4E9E-852F-E83F54CB51F0_1_105_c-1073583750-1590926505100.jpeg",
+      "PackagePath": "staticwebassets\\images\\77aa6bb8-9bdc-49db-a405-43204cf8a7c3_42434B4B-1320-4E9E-852F-E83F54CB51F0_1_105_c-1073583750-1590926505100.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\782efe7b-1dd9-429e-aa99-4218d4332601_2DkjwmGoLRw.jpg",
+      "PackagePath": "staticwebassets\\images\\782efe7b-1dd9-429e-aa99-4218d4332601_2DkjwmGoLRw.jpg"
     },
     {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\7f36f7ef-1986-467c-82f0-e4cfeb0b291d_7u4jku45-EU.jpg",
@@ -41,6 +85,10 @@
       "PackagePath": "staticwebassets\\images\\90511c3a-c071-4907-a642-f4e6254a5866_7u4jku45-EU.jpg"
     },
     {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\905e5479-4e71-4b4d-9ee2-4a9fbaa4fe70_42434B4B-1320-4E9E-852F-E83F54CB51F0_1_105_c-1073583750-1590926505100.jpeg",
+      "PackagePath": "staticwebassets\\images\\905e5479-4e71-4b4d-9ee2-4a9fbaa4fe70_42434B4B-1320-4E9E-852F-E83F54CB51F0_1_105_c-1073583750-1590926505100.jpeg"
+    },
+    {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\95fc9b09-82b9-4327-b198-83516b5159ee_лена.png",
       "PackagePath": "staticwebassets\\images\\95fc9b09-82b9-4327-b198-83516b5159ee_лена.png"
     },
@@ -53,12 +101,28 @@
       "PackagePath": "staticwebassets\\images\\9b1e709d-4c97-4dcd-a732-818eeacef5b8_6gzxQ-_dIUI.jpg"
     },
     {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\bbd9204c-fd43-4f6b-82bc-ec7ad09b69b4_share.jpg",
+      "PackagePath": "staticwebassets\\images\\bbd9204c-fd43-4f6b-82bc-ec7ad09b69b4_share.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\d81ad6e4-a932-4e47-8383-d0ae38252642_photo_2025-04-28_13-17-08 (2).jpg",
+      "PackagePath": "staticwebassets\\images\\d81ad6e4-a932-4e47-8383-d0ae38252642_photo_2025-04-28_13-17-08 (2).jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\de5d3952-696b-49cd-bbae-8366516f9957_afF_WvF6KZk.jpg",
+      "PackagePath": "staticwebassets\\images\\de5d3952-696b-49cd-bbae-8366516f9957_afF_WvF6KZk.jpg"
+    },
+    {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\e499bc82-c052-4edd-ae31-fbc7863d3d11_2DkjwmGoLRw.jpg",
       "PackagePath": "staticwebassets\\images\\e499bc82-c052-4edd-ae31-fbc7863d3d11_2DkjwmGoLRw.jpg"
     },
     {
       "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\e4a78177-a5e5-472c-bdf8-be7f9853e78e_8JPKaKTzsE8.jpg",
       "PackagePath": "staticwebassets\\images\\e4a78177-a5e5-472c-bdf8-be7f9853e78e_8JPKaKTzsE8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\wwwroot\\images\\f5de27e0-46f9-4c52-af48-35b511ca2c88_6gzxQ-_dIUI.jpg",
+      "PackagePath": "staticwebassets\\images\\f5de27e0-46f9-4c52-af48-35b511ca2c88_6gzxQ-_dIUI.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MT.Api.Microsoft.AspNetCore.StaticWebAssets.props",

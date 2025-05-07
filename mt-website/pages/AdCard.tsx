@@ -15,13 +15,14 @@ export default function AllAdsPage() {
     }, []);
 
     return (
-        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-            {orders.map((order: any) => {
-                console.log("Order item images:", order.item.images);
-                return (
-                    <Link href={`/ads/${order.orderId}?orderId=${order.id}`}>
+        <div className="ads-page-container">
+            {orders.map((order: any) => (
+                <Link
+                    href={`/ads/${order.orderId}?orderId=${order.id}`}
+                    key={order.orderId}
+                    className="ad-card-link"
+                >
                     <AdCard
-                        key={order.orderId}
                         title={order.orderName}
                         price={order.item.price}
                         description={order.item.description}
@@ -31,9 +32,8 @@ export default function AllAdsPage() {
                                 : '/placeholder.jpg'
                         }
                     />
-                    </Link>      
-                );
-            })}
+                </Link>
+            ))}
         </div>
     );
 }

@@ -6,18 +6,18 @@
 }
 
 export default function AdCard({ title, description, price, imageUrl }: AdCardProps) {
-    console.log("Image URL:", imageUrl);
-    
     return (
-        <div className="border rounded shadow p-4 flex flex-col">
+        <div className="ad-card">
             <img
                 src={imageUrl || '/placeholder.jpg'}
                 alt={title}
-                className="h-48 w-full object-cover mb-4 rounded"
+                className="ad-card-image"
             />
-            <h2 className="text-lg font-bold">{title}</h2>
-            {description && <p className="text-sm text-gray-600 mb-2">{description}</p>}
-            <p className="text-green-600 font-semibold">{price} ₽</p>
+            <div className="ad-card-content">
+                <h2 className="ad-card-title">{title}</h2>
+                {description && <p className="ad-card-description">{description}</p>}
+                <p className="ad-card-price">{price} ₽</p>
+            </div>
         </div>
     );
 }
