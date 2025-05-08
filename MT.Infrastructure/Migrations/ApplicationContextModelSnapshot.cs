@@ -31,14 +31,12 @@ namespace MT.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -48,10 +46,15 @@ namespace MT.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Telephone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("ContactsEntity");
                 });
@@ -162,9 +165,14 @@ namespace MT.Infrastructure.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ItemId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -181,20 +189,24 @@ namespace MT.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("PersonalsEntity");
                 });
@@ -211,7 +223,6 @@ namespace MT.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Instagram")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -221,18 +232,21 @@ namespace MT.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Telegram")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Twitter")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Vkontakte")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("SocialsEntity");
                 });
@@ -245,11 +259,12 @@ namespace MT.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("ContactsId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -257,17 +272,13 @@ namespace MT.Infrastructure.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("OrderId")
-                        .HasColumnType("bigint");
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
-                    b.Property<long>("PersonalsId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("SocialsId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -281,15 +292,18 @@ namespace MT.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContactsId");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("PersonalsId");
-
-                    b.HasIndex("SocialsId");
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MT.Domain.Entities.ContactsEntity", b =>
+                {
+                    b.HasOne("MT.Domain.Entities.UserEntity", "User")
+                        .WithOne("Contacts")
+                        .HasForeignKey("MT.Domain.Entities.ContactsEntity", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MT.Domain.Entities.ItemImageEntity", b =>
@@ -307,47 +321,54 @@ namespace MT.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MT.Domain.Entities.UserEntity", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Item");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MT.Domain.Entities.UserEntity", b =>
+            modelBuilder.Entity("MT.Domain.Entities.PersonalsEntity", b =>
                 {
-                    b.HasOne("MT.Domain.Entities.ContactsEntity", "Contacts")
-                        .WithMany()
-                        .HasForeignKey("ContactsId")
+                    b.HasOne("MT.Domain.Entities.UserEntity", "User")
+                        .WithOne("Personals")
+                        .HasForeignKey("MT.Domain.Entities.PersonalsEntity", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MT.Domain.Entities.OrderEntity", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MT.Domain.Entities.SocialsEntity", b =>
+                {
+                    b.HasOne("MT.Domain.Entities.UserEntity", "User")
+                        .WithOne("Socials")
+                        .HasForeignKey("MT.Domain.Entities.SocialsEntity", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MT.Domain.Entities.PersonalsEntity", "Personals")
-                        .WithMany()
-                        .HasForeignKey("PersonalsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MT.Domain.Entities.SocialsEntity", "Socials")
-                        .WithMany()
-                        .HasForeignKey("SocialsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contacts");
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Personals");
-
-                    b.Navigation("Socials");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MT.Domain.Entities.ItemEntity", b =>
                 {
                     b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("MT.Domain.Entities.UserEntity", b =>
+                {
+                    b.Navigation("Contacts")
+                        .IsRequired();
+
+                    b.Navigation("Orders");
+
+                    b.Navigation("Personals")
+                        .IsRequired();
+
+                    b.Navigation("Socials")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

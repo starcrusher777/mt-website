@@ -21,6 +21,7 @@ public class UserService
         var userEntity = _mapper.Map<UserEntity>(userModel);
         await _userRepository.CreateUserAsync(userEntity);
     }
+    
 
     public async Task<List<UserEntity>> GetUsersAsync()
     {

@@ -52,6 +52,8 @@ public class UserController : ControllerBase
         
         await _service.CreateUserAsync(user);
         
+        user.Password = null;
+        
         return Ok(_mapper.Map<UserModel>(user));
     }
 }

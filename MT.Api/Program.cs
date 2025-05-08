@@ -28,6 +28,9 @@ public class Program
         builder.Services.AddScoped<IItemRepository, ItemRepository>();
         builder.Services.AddScoped<ItemService>();
         
+        builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+        builder.Services.AddScoped<AuthService>();
+        
         builder.Services.AddCors(options =>
         {
             options.AddPolicy("AllowFrontend", policy =>

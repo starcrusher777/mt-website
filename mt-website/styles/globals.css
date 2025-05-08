@@ -101,7 +101,7 @@ body {
   margin-top: 2rem;
 }
 
-/* Аниме-стиль кнопок */
+/* Стиль кнопок */
 .anime-button {
   padding: 0.75rem 1.5rem;
   border-radius: 999px;
@@ -186,6 +186,23 @@ body {
 }
 
 .form-button:hover {
+  background: linear-gradient(to right, #6a6ad3, #759be7, #85dedc);
+  transform: scale(1.03);
+}
+
+.register-button {
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.register-button:hover {
   background: linear-gradient(to right, #6a6ad3, #759be7, #85dedc);
   transform: scale(1.03);
 }

@@ -53,6 +53,7 @@ export default function HomePage() {
             <div className="button-group">
                 <Link href="/AdCard" className="anime-button blue">Смотреть все</Link>
                 <Link href="/createNew" className="anime-button green">Создать</Link>
+                <Link href="/auth" className="anime-button blue">Авторизация</Link>
             </div>
         </div>
     );
