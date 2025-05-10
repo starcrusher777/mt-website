@@ -16,7 +16,10 @@ public class OrderRepository(ApplicationContext context) : IOrderRepository
     
     public async Task<OrderEntity?> GetOrderAsync(long orderId)
     {
-        return await context.Orders.Include(o => o.Item).ThenInclude(i => i.Images).FirstOrDefaultAsync(o => o.Id == orderId);
+        return await context.Orders.Include(o => o.Item)
+            .ThenInclude(i => i.Images)
+            .Include(o => o.User)
+            .FirstOrDefaultAsync(o => o.Id == orderId);
     }
     
     public async Task<OrderEntity> CreateOrderAsync (OrderEntity orderEntity)

@@ -8,6 +8,7 @@ public class OrderCreateFormModel : BaseModel
     public string OrderName { get; set; }
     public OrderStatus Status { get; set; }
     public OrderType Type { get; set; }
+    public long? UserId { get; set; }
 
     public ItemCreateFormModel Item { get; set; }
 

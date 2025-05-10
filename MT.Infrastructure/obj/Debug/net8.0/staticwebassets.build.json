@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SGiU/oWPI1TKkc63MvrUMki5AUN9+kA2NluIUuh202w=",
+  "Hash": "4bahpxtvvvOixGnripexuFjmlDVjNSuKkaY7vIzADrg=",
   "Source": "MT.Infrastructure",
   "BasePath": "_content/MT.Infrastructure",
   "Mode": "Default",
@@ -11,10 +11,10 @@
       "Version": 2,
       "Source": "MT.Domain",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     }
   ],

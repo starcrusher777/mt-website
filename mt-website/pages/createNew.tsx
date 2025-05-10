@@ -11,6 +11,8 @@ export default function CreateNew() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        const userId = localStorage.getItem('userid');
+        
         const formData = new FormData();
         formData.append('OrderName', name);
         formData.append('Type', 'Sell');
@@ -19,6 +21,7 @@ export default function CreateNew() {
         formData.append('Item.Description', description);
         formData.append('Item.Price', price);
         formData.append('Item.Quantity', '1');
+        formData.append('UserId', userId || '');
 
         if (images) {
             Array.from(images).forEach((file) => {

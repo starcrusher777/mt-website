@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Navbar from '../components/Navbar';
 
 
 interface Order {
@@ -26,34 +27,30 @@ export default function HomePage() {
     }, []);
 
     return (
-        <div className="homepage">
-            <h1 className="homepage-title">Добро пожаловать в MerchTrade</h1>
-
-            <div className="order-grid">
-                {orders.map(order => (
-                    <Link href={`/ads/${order.orderId}?orderId=${order.id}`} key={order.orderId}>
-                        <div className="order-card">
-                            <img
-                                src={
-                                    order.item.images.length > 0
-                                        ? `${process.env.NEXT_PUBLIC_API_URL}${order.item.images[0].imageUrl}`
-                                        : '/placeholder.jpg'
-                                }
-                                alt={order.item.name}
-                                className="order-image"
-                            />
-                            <h2 className="order-title">{order.orderName}</h2>
-                            <p className="order-item-name">{order.item.name}</p>
-                            <p className="order-price">{order.item.price} ₽</p>
-                        </div>
-                    </Link>
-                ))}
-            </div>
-
-            <div className="button-group">
-                <Link href="/AdCard" className="anime-button blue">Смотреть все</Link>
-                <Link href="/createNew" className="anime-button green">Создать</Link>
-                <Link href="/auth" className="anime-button blue">Авторизация</Link>
+        <div className="homepage-main-container">
+            <div className="homepage">
+                <h1 className="homepage-title">Welcome to MerchTrade</h1>
+                
+                <div className="order-grid">
+                    {orders.map(order => (
+                        <Link href={`/ads/${order.orderId}?orderId=${order.id}`} key={order.orderId}>
+                            <div className="order-card">
+                                <img
+                                    src={
+                                        order.item.images.length > 0
+                                            ? `${process.env.NEXT_PUBLIC_API_URL}${order.item.images[0].imageUrl}`
+                                            : '/placeholder.jpg'
+                                    }
+                                    alt={order.item.name}
+                                    className="order-image"
+                                />
+                                <h2 className="order-title">{order.orderName}</h2>
+                                <p className="order-item-name">{order.item.name}</p>
+                                <p className="order-price">{order.item.price} ₽</p>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     );

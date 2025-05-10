@@ -5,6 +5,9 @@ using MT.Domain.Interfaces;
 using MT.Infrastructure.Data;
 using MT.Infrastructure.Data.Repositories;
 using MT.Infrastructure.Maps.Profiles;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MerchTrade;
 
@@ -37,38 +40,50 @@ public class Program
             {
                 policy.WithOrigins("http://localhost:3000")
                     .AllowAnyMethod()
-                    .AllowAnyHeader();
+                    .AllowAnyHeader()
+                    .AllowCredentials();
             });
         });
+        
         builder.Services.AddSwaggerGen();
         builder.Services.AddControllers();
         builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddAutoMapper(typeof(OrderCreateFormProfile));
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowAnyOrigin",
-                builder =>
+        builder.Services.AddAutoMapper(typeof(UserProfile));
+        builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-                });
-        });
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                };
+            });
 
         var app = builder.Build();
+        
+        app.UseCors("AllowFrontend");
+        app.UseAuthentication();
+        app.UseAuthorization();
         
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
-            app.UseCors("AllowAnyOrigin");
         }
         
-        app.UseCors("AllowFrontend");
         app.UseStaticFiles();
         app.MapControllers();
-        app.UseHttpsRedirection();
         app.UseAuthorization();
         
         app.Run();

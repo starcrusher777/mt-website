@@ -1,4 +1,6 @@
 ﻿import { useState } from 'react';
+import {router} from "next/client";
+import { useAuth } from '../components/AuthContext';
 
 export default function AuthPage() {
     const [isRegistering, setIsRegistering] = useState(false);
@@ -7,6 +9,9 @@ export default function AuthPage() {
         email: '',
         password: ''
     });
+
+    const { setUsername } = useAuth();
+    const { setUserId } = useAuth();
 
     const handleChange = (e) => {
         setFormData((prev) => ({
@@ -40,15 +45,37 @@ export default function AuthPage() {
                     headers: {
                         'Content-Type': 'application/json'
                     },
+                    credentials: 'include',
                     body: JSON.stringify({
                         email: formData.email,
                         password: formData.password
                     })
                 });
 
+                const result = await response.json();
+                const token = result.token;
+                localStorage.setItem('jwt', token);
+                
                 if (!response.ok) throw new Error(await response.text());
+                
+                const auth = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Auth/GetUser`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    credentials: 'include'
+                });
+                if (!auth.ok) throw new Error('Не удалось получить пользователя');
 
-                const data = await response.json();
+                const user = await auth.json();
+                localStorage.setItem('username', user.username);
+                localStorage.setItem('userid', user.id);
+                setUsername(user.username);
+                setUserId(user.id);
+                
+                await router.push('/');
+                
             }
         } catch (err) {
             alert(err.message || 'Произошла ошибка');

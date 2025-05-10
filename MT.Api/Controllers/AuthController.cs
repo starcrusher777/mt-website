@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MT.Application.Services;
 using MT.Domain.Entities;
@@ -30,7 +32,39 @@ public class AuthController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
-        var user = await _service.LoginAsync(model);
-        return Ok(new { userId = user.Id });
+        try
+        {
+            var (token, user) = await _service.LoginAsync(model);
+
+            Response.Cookies.Append("jwt", token, new CookieOptions
+            {
+                HttpOnly = true,
+                SameSite = SameSiteMode.None,
+                Secure = true,
+                Expires = DateTime.UtcNow.AddMinutes(30)
+            });
+
+            return Ok(new { message = "Вход успешен", username = user.Username, userid = user.Id, token });
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            return Unauthorized(e.Message);
+        }
+    }
+
+    [HttpPost]
+    [Authorize]
+    public IActionResult GetUser()
+    {
+        var username = User.Identity?.Name;
+        var email = User.FindFirst(ClaimTypes.Email)?.Value;
+        var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        
+        return Ok(new
+        {
+            Username = username, 
+            Email = email, 
+            Id = id
+        });
     }
 }

@@ -9,12 +9,16 @@ interface Order {
     id: number;
     orderId: number;
     orderName: string;
+    userId: number;
     item: {
         name: string;
         description: string;
         price: number;
         images: { imageUrl: string }[];
     };
+    user: {
+        username: string;
+    }
 }
 
 export default function AdDetailPage() {
@@ -31,7 +35,7 @@ export default function AdDetailPage() {
                 setOrder(data);
             });
     }, [id, orderId]);
-
+    
     if (!order) return <div className="ad-loading">Загрузка...</div>;
 
     return (
@@ -56,6 +60,14 @@ export default function AdDetailPage() {
             <h1 className="ad-title">{order.orderName}</h1>
             <p className="ad-description">{order.item.description}</p>
             <p className="ad-price">{order.item.price} ₽</p>
+            <br/>
+            <p className="ad-user">
+                Объявление пользователя:{' '}
+                <a href={`/user/${order.userId}`} className="ad-user-link">
+                    {order.user.username}
+                </a>
+            </p>
+
         </div>
     );
 }

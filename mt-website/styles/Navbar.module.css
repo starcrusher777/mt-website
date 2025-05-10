@@ -1,0 +1,84 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #ff0080, #7928ca);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 0, 128, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-title {
+    font-size: 1rem;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff00cc;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #ffe600;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ffe600;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.nav-button::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-button:hover::after {
+    width: 100%;
+}
+
+.nav-button:hover {
+    color: #ffe600;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ffe600;
+}

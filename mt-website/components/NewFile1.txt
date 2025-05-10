@@ -1,0 +1,30 @@
+﻿return (
+        <div className="ad-container">
+            <h1 className="ad-title">Профиль пользователя: {user.username}</h1>
+
+            {(user.personals.firstName || user.personals.lastName) && (
+                <p className="ad-description">
+                    Имя: {user.personals.firstName || '-'} {user.personals.lastName || ''}
+                </p>
+            )}
+
+            <div className="ad-section">
+                <h2 className="ad-subtitle">Контакты</h2>
+                <ul className="ad-list">
+                    <li>Email: {user.contacts.email || '—'}</li>
+                    <li>Телефон: {user.contacts.telephone || '—'}</li>
+                    <li>Адрес: {user.contacts.address || '—'}</li>
+                </ul>
+            </div>
+
+            <div className="ad-section">
+                <h2 className="ad-subtitle">Соцсети</h2>
+                <ul className="ad-list">
+                    <li>Telegram: {user.socials.telegram || '—'}</li>
+                    <li>VK: {user.socials.vkontakte || '—'}</li>
+                    <li>Instagram: {user.socials.instagram || '—'}</li>
+                    <li>Twitter: {user.socials.twitter || '—'}</li>
+                </ul>
+            </div>
+        </div>
+    );

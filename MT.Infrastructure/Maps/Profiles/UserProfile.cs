@@ -9,5 +9,8 @@ public class UserProfile : Profile
     public UserProfile()
     {
         CreateMap<UserModel, UserEntity>().ReverseMap();
+        CreateMap<ContactsModel, ContactsEntity>().ReverseMap();
+        CreateMap<SocialsModel, SocialsEntity>().ReverseMap();
+        CreateMap<PersonalsModel, PersonalsEntity>().ReverseMap();
     }
 }

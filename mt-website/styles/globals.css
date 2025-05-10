@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
   --background: #ffffff;
@@ -32,14 +33,20 @@ body {
   padding: 2rem;
 }
 
+.homepage-main-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 /* Заголовок */
 .homepage-title {
-  font-size: 2.25rem;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff00cc;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   text-align: center;
   color: #5d3fd3;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Сетка заказов */
@@ -325,5 +332,11 @@ body {
   font-size: 1.1rem;
   font-weight: bold;
   color: #2fb170;
+}
+
+.ad-user {
+  color: #2e2e7d;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 

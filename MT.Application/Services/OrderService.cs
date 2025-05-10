@@ -24,6 +24,7 @@ public class OrderService
             OrderName = orderModel.OrderName,
             Status = orderModel.Status,
             Type = orderModel.Type,
+            UserId = orderModel.UserId,
             Item = new ItemEntity
             {
                 Name = orderModel.Item.Name,

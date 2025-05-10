@@ -6,4 +6,6 @@ public interface IAuthRepository
 {
     Task RegisterAsync(UserEntity user, string password);
     Task<UserEntity> LoginAsync(string email, string password);
+    
+    
 }

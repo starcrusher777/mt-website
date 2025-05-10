@@ -13,7 +13,11 @@ public class UserRepository(ApplicationContext context) : IUserRepository
     
     public async Task<UserEntity?> GetUserAsync(long userId)
     {
-        return await context.Users.FindAsync(userId);
+        return await context.Users
+            .Include(u => u.Contacts)
+            .Include(u => u.Socials)
+            .Include(u => u.Personals)
+            .FirstOrDefaultAsync(u => u.Id == userId);
     }
     
     public async Task<UserEntity> CreateUserAsync (UserEntity userEntity)

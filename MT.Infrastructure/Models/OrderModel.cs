@@ -9,6 +9,9 @@ public class OrderModel : BaseModel
     public string OrderName { get; set; }
     public OrderStatus Status { get; set; }
     public OrderType OrderType { get; set; }
+    public long UserId { get; set; }
+    
     
     public ItemModel Item { get; set; }
+    public UserModel User { get; set; }
 }
