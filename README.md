@@ -4,4 +4,6 @@ At this moment, this is only the initial stage of website development, with a ba
 Plans include adding more useful features, security, improved UI/UX, and an app for iOS and Android.
 
 
-
+<p align="center">
+  <img src="https://github.com/starcrusher777/mt-website/blob/main/mt-website/public/mtlogo.png?raw=true" alt="MerchTrade Logo" width="250"/>
+</p>
