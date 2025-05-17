@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
 
 
 interface Order {
@@ -38,7 +37,8 @@ export default function HomePage() {
                                 <img
                                     src={
                                         order.item.images.length > 0
-                                            ? `${process.env.NEXT_PUBLIC_API_URL}${order.item.images[0].imageUrl}`
+                                            ? `${process.env.NEXT_PUBLIC_API_URL}${order.item.images[0]
+                                                .imageUrl}`
                                             : '/placeholder.jpg'
                                     }
                                     alt={order.item.name}

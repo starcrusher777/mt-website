@@ -72,4 +72,10 @@ public class OrderService
         var order = await _orderRepository.GetOrderAsync(orderId);
         return _mapper.Map<OrderEntity>(order);
     }
+
+    public async Task<List<OrderEntity>> GetOrdersByUserIdAsync(long userId)
+    {
+        var orders = await _orderRepository.GetOrdersByUserIdAsync(userId);
+        return orders;
+    }
 }

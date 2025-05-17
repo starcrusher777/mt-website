@@ -24,12 +24,7 @@ public class UserController : ControllerBase
     {
         var users = await _service.GetUsersAsync();
 
-        if (!users.Any())
-        {
-            return Ok("No users found");
-        }
-        
-        return Ok(_mapper.Map<List<UserModel>>(users));
+        return users.Count == 0 ? Ok("No users found") : Ok(_mapper.Map<List<UserModel>>(users));
     }
 
     [HttpGet("{id}")]
@@ -53,6 +48,16 @@ public class UserController : ControllerBase
         await _service.CreateUserAsync(user);
         
         user.Password = null;
+        
+        return Ok(_mapper.Map<UserModel>(user));
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateUser([FromRoute(Name = "id")] long userId, [FromBody] UserUpdateModel updatedUser)
+    {
+        var user = await _service.UpdateUserAsync(userId, updatedUser);
+        if (user == null)
+            return Ok($"User with id '{userId}' not found!");
         
         return Ok(_mapper.Map<UserModel>(user));
     }

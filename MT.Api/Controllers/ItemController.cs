@@ -23,12 +23,7 @@ public class ItemController : ControllerBase
     {
         var items = await _service.GetItemsAsync();
 
-        if (!items.Any())
-        {
-            return Ok("No items found");
-        }
-        
-        return Ok(_mapper.Map<List<ItemModel>>(items));
+        return items.Count == 0 ? Ok("No items found") : Ok(_mapper.Map<List<ItemModel>>(items));
     }
 
     [HttpGet("{id}")]

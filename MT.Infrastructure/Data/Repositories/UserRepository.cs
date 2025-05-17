@@ -26,4 +26,14 @@ public class UserRepository(ApplicationContext context) : IUserRepository
         await context.SaveChangesAsync();
         return userEntity;
     }
+    
+    public void Update(UserEntity user)
+    {
+        context.Users.Update(user);
+    }
+
+    public async Task SaveChangesAsync()
+    {
+        await context.SaveChangesAsync();
+    }
 }

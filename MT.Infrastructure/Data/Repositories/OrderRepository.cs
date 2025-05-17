@@ -28,4 +28,14 @@ public class OrderRepository(ApplicationContext context) : IOrderRepository
         await context.SaveChangesAsync();
         return orderEntity;
     }
+
+    public async Task<List<OrderEntity>> GetOrdersByUserIdAsync(long userId)
+    {
+        return await context.Orders
+            .Where(o => o.UserId == userId)
+            .Include(o => o.Item)
+            .ThenInclude(i => i.Images)
+            .Include(o => o.User)
+            .ToListAsync();
+    }
 }

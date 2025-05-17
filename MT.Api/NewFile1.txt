@@ -1,0 +1,47 @@
+﻿public async Task<UserEntity?> UpdateUserAsync(long userId, UserUpdateModel updatedUser)
+    {
+        var user = await _userRepository.GetUserAsync(userId);
+        if (user == null) return null;
+        
+        user.Personals.FirstName = updatedUser.Personals.FirstName;
+        user.Personals.LastName = updatedUser.Personals.LastName;
+        
+        user.Contacts.Email = updatedUser.Contacts.Email;
+        user.Contacts.Telephone = updatedUser.Contacts.Telephone;
+        user.Contacts.Address = updatedUser.Contacts.Address;
+        
+        user.Socials.Telegram = updatedUser.Socials.Telegram;
+        user.Socials.Twitter = updatedUser.Socials.Twitter;
+        user.Socials.Vkontakte = updatedUser.Socials.Vkontakte;
+        user.Socials.Instagram = updatedUser.Socials.Instagram;
+        
+        user.ModifiedAt = DateTime.UtcNow;
+        
+        _userRepository.Update(user);
+        await _userRepository.SaveChangesAsync();
+        
+        return user;
+    }
+    
+    
+    [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateUser([FromRoute(Name = "id")] long userId, [FromBody] UserUpdateModel updatedUser)
+        {
+            var user = await _service.GetUserAsync(userId);
+            if (user == null) return NotFound($"User with id '{userId}' not found!");
+    
+            user.Personals.FirstName = updatedUser.Personals.FirstName;
+            user.Personals.LastName = updatedUser.Personals.LastName;
+            
+            user.Contacts.Email = updatedUser.Contacts.Email;
+            user.Contacts.Telephone = updatedUser.Contacts.Telephone;
+            user.Contacts.Address = updatedUser.Contacts.Address;
+            
+            user.Socials.Telegram = updatedUser.Socials.Telegram;
+            user.Socials.Twitter = updatedUser.Socials.Twitter;
+            user.Socials.Vkontakte = updatedUser.Socials.Vkontakte;
+            user.Socials.Instagram = updatedUser.Socials.Instagram;
+    
+            await _service.UpdateUserAsync(user);
+            return Ok(_mapper.Map<UserUpdateModel>(user));
+        }

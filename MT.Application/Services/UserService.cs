@@ -34,4 +34,29 @@ public class UserService
         var user = await _userRepository.GetUserAsync(userId);
         return _mapper.Map<UserEntity>(user);
     }
+
+    public async Task<UserEntity?> UpdateUserAsync(long userId, UserUpdateModel updatedUser)
+    {
+        var user = await _userRepository.GetUserAsync(userId);
+        if (user == null) return null;
+        
+        user.Personals.FirstName = updatedUser.Personals.FirstName;
+        user.Personals.LastName = updatedUser.Personals.LastName;
+        
+        user.Contacts.Email = updatedUser.Contacts.Email;
+        user.Contacts.Telephone = updatedUser.Contacts.Telephone;
+        user.Contacts.Address = updatedUser.Contacts.Address;
+        
+        user.Socials.Telegram = updatedUser.Socials.Telegram;
+        user.Socials.Twitter = updatedUser.Socials.Twitter;
+        user.Socials.Vkontakte = updatedUser.Socials.Vkontakte;
+        user.Socials.Instagram = updatedUser.Socials.Instagram;
+        
+        user.ModifiedAt = DateTime.UtcNow;
+        
+        _userRepository.Update(user);
+        await _userRepository.SaveChangesAsync();
+        
+        return user;
+    }
 }

@@ -51,6 +51,8 @@ public class Program
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddAutoMapper(typeof(OrderCreateFormProfile));
         builder.Services.AddAutoMapper(typeof(UserProfile));
+        builder.Services.AddAutoMapper(typeof(UserUpdateProfile));
+        
         builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
