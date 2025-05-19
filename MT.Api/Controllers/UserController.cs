@@ -1,7 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MT.Application.Services;
-using MT.Domain.Interfaces;
 using MT.Infrastructure.Models;
 
 namespace MerchTrade.Controllers;
@@ -31,13 +32,8 @@ public class UserController : ControllerBase
     public async Task<IActionResult> GetUser(long userId)
     {
         var user = await _service.GetUserAsync(userId);
-        
-        if (user == null)
-        {
-            return NotFound($"User with id '{userId}' not found!");
-        }
 
-        return Ok(_mapper.Map<UserModel>(user));
+        return user == null ? NotFound($"User with id '{userId}' not found!") : Ok(_mapper.Map<UserModel>(user));
     }
 
     [HttpPost]
@@ -53,12 +49,13 @@ public class UserController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize]
     public async Task<ActionResult> UpdateUser([FromRoute(Name = "id")] long userId, [FromBody] UserUpdateModel updatedUser)
     {
+        var userIdFromToken = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userIdFromToken == null || userIdFromToken != userId.ToString())
+            return Unauthorized();
         var user = await _service.UpdateUserAsync(userId, updatedUser);
-        if (user == null)
-            return Ok($"User with id '{userId}' not found!");
-        
-        return Ok(_mapper.Map<UserModel>(user));
+        return user == null ? Ok($"User with id '{userId}' not found!") : Ok(_mapper.Map<UserModel>(user));
     }
 }

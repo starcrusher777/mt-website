@@ -2,6 +2,9 @@
 import { useRouter } from 'next/router';
 import styles from '../../styles/UserProfile.module.css';
 
+
+
+
 interface User {
     id: number;
     username: string;
@@ -35,7 +38,6 @@ export default function EditProfilePage() {
             .then(data => {
                 setUser(data);
                 setLoading(false);
-                console.log(data);
             });
     }, []);
     
@@ -55,18 +57,23 @@ export default function EditProfilePage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Отправляемый JSON:', JSON.stringify(user, null, 2));
+        const token = localStorage.getItem("jwt");
+        if (!token) {
+            alert("Вы не авторизованы");
+            return;
+        }
+        
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/User/UpdateUser/${id}?userId=${id}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${token}`},
             body: JSON.stringify(user),
         });
-        console.log(response);
-        console.log(id);
-
+        
         if (response.ok) {
             alert('Профиль обновлен');
-            router.push(`/user/${id}?userId=${id}`);
+            await router.push(`/user/${id}?userId=${id}`);
         } else {
             alert('Ошибка обновления');
         }
@@ -76,25 +83,26 @@ export default function EditProfilePage() {
 
     return (
         <div className={styles.page}>
-            <h1>Редактировать профиль</h1>
-            <form onSubmit={handleSubmit} className={styles.editForm}>
-                <h3>Персональные данные</h3>
-                <input type="text" name="firstName" placeholder="Имя" value={user.personals.firstName || ''} onChange={handleChange} />
-                <input type="text" name="lastName" placeholder="Фамилия" value={user.personals.lastName || ''} onChange={handleChange} />
+            <h1 className={styles.title}>Редактировать профиль</h1>
+            <form onSubmit={handleSubmit} className="form">
+                <h3 className={styles.title}>Персональные данные</h3>
+                <input type="text" name="firstName" placeholder="Имя" value={user.personals.firstName || ''} onChange={handleChange} className="form-input"/>
+                <input type="text" name="lastName" placeholder="Фамилия" value={user.personals.lastName || ''} onChange={handleChange} className="form-input"/>
 
-                <h3>Контакты</h3>
-                <input type="email" name="email" placeholder="Email" value={user.contacts.email || ''} onChange={handleChange} />
-                <input type="tel" name="telephone" placeholder="Телефон" value={user.contacts.telephone || ''} onChange={handleChange} />
-                <input type="text" name="address" placeholder="Адрес" value={user.contacts.address || ''} onChange={handleChange} />
+                <h3 className={styles.title}>Контакты</h3>
+                <input type="email" name="email" placeholder="Email" value={user.contacts.email || ''} onChange={handleChange} className="form-input"/>
+                <input type="tel" name="telephone" placeholder="Телефон" value={user.contacts.telephone || ''} onChange={handleChange} className="form-input"/>
+                <input type="text" name="address" placeholder="Адрес" value={user.contacts.address || ''} onChange={handleChange} className="form-input"/>
 
-                <h3>Социальные сети</h3>
-                <input type="text" name="telegram" placeholder="Telegram" value={user.socials.telegram || ''} onChange={handleChange} />
-                <input type="text" name="vkontakte" placeholder="VK" value={user.socials.vkontakte || ''} onChange={handleChange} />
-                <input type="text" name="instagram" placeholder="Instagram" value={user.socials.instagram || ''} onChange={handleChange} />
-                <input type="text" name="twitter" placeholder="Twitter" value={user.socials.twitter || ''} onChange={handleChange} />
+                <h3 className={styles.title}>Социальные сети</h3>
+                <input type="text" name="telegram" placeholder="Telegram" value={user.socials.telegram || ''} onChange={handleChange} className="form-input"/>
+                
+                <input type="text" name="vkontakte" placeholder="VK" value={user.socials.vkontakte || ''} onChange={handleChange} className="form-input"/>
+                <input type="text" name="instagram" placeholder="Instagram" value={user.socials.instagram || ''} onChange={handleChange} className="form-input"/>
+                <input type="text" name="twitter" placeholder="Twitter" value={user.socials.twitter || ''} onChange={handleChange} className="form-input"/>
 
                 <br />
-                <button type="submit">Сохранить изменения</button>
+                <button type="submit" className="anime-button">Сохранить изменения</button>
             </form>
         </div>
     );

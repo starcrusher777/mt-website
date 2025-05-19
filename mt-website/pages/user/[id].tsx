@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from '../../styles/UserProfile.module.css';
 
+
 interface User {
     id: number;
     username: string;
@@ -43,6 +44,15 @@ export default function UserProfilePage() {
     const [user, setUser] = useState<User | null>(null);
     const [orders, setOrders] = useState<Order[]>([]);
 
+    const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('userId');
+        if (storedUserId) {
+            setCurrentUserId(Number(storedUserId));
+        }
+    }, []);
+
     useEffect(() => {
         if (!id) return;
         
@@ -63,16 +73,19 @@ export default function UserProfilePage() {
         <div className={styles.profileContainer}>
             <div className={styles.page}>
                 <h1 className={styles.title}>Профиль пользователя: {user.username}</h1>
-                <Link href={`/profile/edit?id=${user.id}`}>
-                    <button className="ad-button">Редактировать профиль</button>
-                </Link>
-                {(user.personals.firstName || user.personals.lastName) && (
-                    <p className="ad-description">
-                        Имя: {user.personals.firstName || '-'} {user.personals.lastName || ''}
-                    </p>
+                {currentUserId === user.id && (
+                    <Link href={`/profile/edit?id=${user.id}`}>
+                        <button className="anime-button">Редактировать профиль</button>
+                    </Link>
                 )}
-
                 <div className={styles.info}>
+                    <h2 className={styles.title}>Личная информация</h2>
+                    {(user.personals.firstName || user.personals.lastName) && (
+                        <ul className={styles.infoTitle}>
+                            Имя: {user.personals.firstName || '-'} {user.personals.lastName || ''}
+                        </ul>
+                    )}
+                    <br/>
                     <h2 className={styles.title}>Контакты</h2>
                     <ul className="ad-list">
                         <li>Email: {user.contacts.email || '—'}</li>
@@ -91,38 +104,38 @@ export default function UserProfilePage() {
                 </div>
                 <br/><br/>
                 <div className={styles.info}>
-                    <h2 className={styles.title}>Объявления пользователя</h2>
-                    {orders.length === 0 ? (
-                        <p className={styles.noOrders}>Пользователь пока не добавил объявления.</p>
-                    ) : (
-                        <div className={styles.orderGrid}>
-                        {orders.map(order => (
-                                <Link href={`/ads/${order.orderId}?orderId=${order.id}`} 
-                                      key={order.id} passHref>
-                                <div key={order.id} className={styles.orderCard}>
-                                    <img
-                                        src={
-                                            order.item.images.length > 0
-                                                ? `${process.env.NEXT_PUBLIC_API_URL}${order.item.images[0]
-                                                    .imageUrl}`
-                                                : '/placeholder.jpg'
-                                        }
-                                        alt="Изображение товара"
-                                        className={styles.orderImage}
-                                    />
-                                    <div className={styles.orderContent}>
-                                        <h3 className={styles.orderTitle}>{order.orderName}</h3>
-                                        <p className={styles.orderDescription}>{order.item.description}</p>
-                                        <p className={styles.orderPrice}>{order.item.price} ₽</p>
-                                    </div>
-                                    
-                                </div>
-                                </Link>
-                            ))}
-                        </div>
-                    )}
+                        <h2 className={styles.title}>Объявления пользователя</h2>
+                        {orders.length === 0 ? (
+                            <p className={styles.noOrders}>Пользователь пока не добавил объявления.</p>
+                        ) : (
+                            <div className={styles.orderGrid}>
+                                {orders.map(order => (
+                                    <Link href={`/ads/${order.orderId}?orderId=${order.id}`}
+                                          key={order.id} passHref>
+                                        <div key={order.id} className={styles.orderCard}>
+                                            <img
+                                                src={
+                                                    order.item.images.length > 0
+                                                        ? `${process.env.NEXT_PUBLIC_API_URL}${order.item.images[0]
+                                                            .imageUrl}`
+                                                        : '/placeholder.jpg'
+                                                }
+                                                alt="Изображение товара"
+                                                className={styles.orderImage}
+                                            />
+                                            <div className={styles.orderContent}>
+                                                <h3 className={styles.orderTitle}>{order.orderName}</h3>
+                                                <p className={styles.orderDescription}>{order.item.description}</p>
+                                                <p className={styles.orderPrice}>{order.item.price} ₽</p>
+                                            </div>
+
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-}
+            );
+            }
