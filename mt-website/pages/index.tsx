@@ -32,7 +32,7 @@ export default function HomePage() {
                 
                 <div className="order-grid">
                     {orders.map(order => (
-                        <Link href={`/ads/${order.orderId}?orderId=${order.id}`} key={order.orderId}>
+                        <Link href={`/ads/${order.id}`} key={order.id}>
                             <div className="order-card">
                                 <img
                                     src={

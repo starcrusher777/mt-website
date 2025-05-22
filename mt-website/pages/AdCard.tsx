@@ -18,7 +18,7 @@ export default function AllAdsPage() {
         <div className="ads-page-container">
             {orders.map((order: any) => (
                 <Link
-                    href={`/ads/${order.orderId}?orderId=${order.id}`}
+                    href={`/ads/${order.id}`}
                     key={order.orderId}
                     className="ad-card-link"
                 >

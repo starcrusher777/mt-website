@@ -9,11 +9,13 @@ public class OrderService
 {
     private readonly IOrderRepository _orderRepository;
     private readonly IMapper _mapper;
+    private readonly IFileRepository _fileRepository;
     
-    public OrderService(IOrderRepository orderRepository, IMapper mapper)
+    public OrderService(IOrderRepository orderRepository, IMapper mapper, IFileRepository fileRepository)
     {
         _orderRepository = orderRepository;
         _mapper = mapper;
+        _fileRepository = fileRepository;
     }
     
 
@@ -37,7 +39,6 @@ public class OrderService
 
         if (orderModel.Images != null)
         {
-            Console.WriteLine($"Получено файлов: {orderModel.Images.Length}");
             
             foreach (var file in orderModel.Images)
             {
@@ -77,5 +78,58 @@ public class OrderService
     {
         var orders = await _orderRepository.GetOrdersByUserIdAsync(userId);
         return orders;
+    }
+
+    public async Task<OrderEntity?> UpdateOrderAsync(long orderId, OrderUpdateModel updatedOrder)
+    {
+        var order = await _orderRepository.GetOrderAsync(orderId);
+        if (order == null) return null;
+        
+        order.OrderName = updatedOrder.OrderName;
+        order.Status = updatedOrder.Status;
+        order.Type = updatedOrder.Type;
+
+        order.Item.Name = updatedOrder.OrderName;
+        order.Item.Description = updatedOrder.Item.Description;
+        order.Item.Price = updatedOrder.Item.Price;
+        order.Item.Quantity = updatedOrder.Item.Quantity;
+        
+        if (updatedOrder.ImagesToDelete.Any())
+        {
+            var imagesToRemove = order.Item.Images
+                .Where(img => updatedOrder.ImagesToDelete.Contains(img.Id))
+                .ToList();
+
+            foreach (var img in imagesToRemove)
+            {
+                _fileRepository.DeleteFileAsync(img.ImageUrl);
+                order.Item.Images.Remove(img);
+            }
+        }
+        
+        if (updatedOrder.Images != null)
+        {
+            foreach (var file in updatedOrder.Images)
+            {
+                var fileName = $"{Guid.NewGuid()}_{file.FileName}";
+                var filePath = Path.Combine("wwwroot/images", fileName);
+
+                await using var stream = new FileStream(filePath, FileMode.Create);
+                await file.CopyToAsync(stream);
+
+                order.Item.Images.Add(new ItemImageEntity
+                {
+                    ImageUrl = $"/images/{fileName}"
+                });
+            }
+        }
+        
+        order.ModifiedAt = DateTime.UtcNow;
+        order.Item.ModifiedAt = DateTime.UtcNow;
+        
+        _orderRepository.UpdateOrder(order);
+        await _orderRepository.SaveChangesAsync();
+
+        return order;
     }
 }

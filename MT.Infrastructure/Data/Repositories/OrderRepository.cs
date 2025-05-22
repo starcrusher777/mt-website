@@ -38,4 +38,14 @@ public class OrderRepository(ApplicationContext context) : IOrderRepository
             .Include(o => o.User)
             .ToListAsync();
     }
+
+    public void UpdateOrder(OrderEntity orderEntity)
+    {
+        context.Orders.Update(orderEntity);
+    }
+
+    public async Task SaveChangesAsync()
+    {
+        await context.SaveChangesAsync();
+    }
 }

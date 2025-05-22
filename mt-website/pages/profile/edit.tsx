@@ -86,20 +86,29 @@ export default function EditProfilePage() {
             <h1 className={styles.title}>Редактировать профиль</h1>
             <form onSubmit={handleSubmit} className="form">
                 <h3 className={styles.title}>Персональные данные</h3>
-                <input type="text" name="firstName" placeholder="Имя" value={user.personals.firstName || ''} onChange={handleChange} className="form-input"/>
-                <input type="text" name="lastName" placeholder="Фамилия" value={user.personals.lastName || ''} onChange={handleChange} className="form-input"/>
+                <input type="text" name="firstName" placeholder="Имя" value={user.personals.firstName || ''} 
+                       onChange={handleChange} className="form-input"/>
+                <input type="text" name="lastName" placeholder="Фамилия" value={user.personals.lastName || ''} 
+                       onChange={handleChange} className="form-input"/>
 
                 <h3 className={styles.title}>Контакты</h3>
-                <input type="email" name="email" placeholder="Email" value={user.contacts.email || ''} onChange={handleChange} className="form-input"/>
-                <input type="tel" name="telephone" placeholder="Телефон" value={user.contacts.telephone || ''} onChange={handleChange} className="form-input"/>
-                <input type="text" name="address" placeholder="Адрес" value={user.contacts.address || ''} onChange={handleChange} className="form-input"/>
+                <input type="email" name="email" placeholder="Email" value={user.contacts.email || ''} 
+                       onChange={handleChange} className="form-input"/>
+                <input type="tel" name="telephone" placeholder="Телефон" value={user.contacts.telephone || ''} 
+                       onChange={handleChange} className="form-input"/>
+                <input type="text" name="address" placeholder="Адрес" value={user.contacts.address || ''} 
+                       onChange={handleChange} className="form-input"/>
 
                 <h3 className={styles.title}>Социальные сети</h3>
-                <input type="text" name="telegram" placeholder="Telegram" value={user.socials.telegram || ''} onChange={handleChange} className="form-input"/>
+                <input type="text" name="telegram" placeholder="Telegram" value={user.socials.telegram || ''} 
+                       onChange={handleChange} className="form-input"/>
                 
-                <input type="text" name="vkontakte" placeholder="VK" value={user.socials.vkontakte || ''} onChange={handleChange} className="form-input"/>
-                <input type="text" name="instagram" placeholder="Instagram" value={user.socials.instagram || ''} onChange={handleChange} className="form-input"/>
-                <input type="text" name="twitter" placeholder="Twitter" value={user.socials.twitter || ''} onChange={handleChange} className="form-input"/>
+                <input type="text" name="vkontakte" placeholder="VK" value={user.socials.vkontakte || ''} 
+                       onChange={handleChange} className="form-input"/>
+                <input type="text" name="instagram" placeholder="Instagram" value={user.socials.instagram || ''} 
+                       onChange={handleChange} className="form-input"/>
+                <input type="text" name="twitter" placeholder="Twitter" value={user.socials.twitter || ''} 
+                       onChange={handleChange} className="form-input"/>
 
                 <br />
                 <button type="submit" className="anime-button">Сохранить изменения</button>

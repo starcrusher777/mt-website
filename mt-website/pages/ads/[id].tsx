@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
+import Link from "next/link";
 
 interface Order {
     id: number;
@@ -23,18 +24,18 @@ interface Order {
 
 export default function AdDetailPage() {
     const router = useRouter();
-    const { id, orderId } = router.query;
+    const { id } = router.query;
 
     const [order, setOrder] = useState<Order | null>(null);
 
     useEffect(() => {
-        if (!id || !orderId) return;
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Order/GetOrder/${id}?orderId=${orderId}`)
+        if (!id) return;
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Order/GetOrder/${id}`)
             .then(res => res.json())
             .then(data => {
                 setOrder(data);
             });
-    }, [id, orderId]);
+    }, [id]);
     
     if (!order) return <div className="ad-loading">Загрузка...</div>;
 
@@ -67,6 +68,10 @@ export default function AdDetailPage() {
                     {order.user.username}
                 </a>
             </p>
+            <Link href={`/order/edit?id=${id}`}>
+                <button className="anime-button">Редактировать объявление</button>
+            </Link>
+            
 
         </div>
     );

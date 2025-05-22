@@ -8,4 +8,6 @@ public interface IOrderRepository
     Task<OrderEntity> GetOrderAsync(long orderId);
     Task<OrderEntity> CreateOrderAsync(OrderEntity order);
     Task<List<OrderEntity>> GetOrdersByUserIdAsync(long userId);
+    void UpdateOrder(OrderEntity order);
+    Task SaveChangesAsync();
 }

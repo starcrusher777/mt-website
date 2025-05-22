@@ -26,12 +26,14 @@ public class OrderController : ControllerBase
         return orders.Count == 0 ? Ok("No orders found") : Ok(_mapper.Map<List<OrderModel>>(orders));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{orderId}")]
     public async Task<IActionResult> GetOrder(long orderId)
     {
         var order = await _service.GetOrderAsync(orderId);
         
-        return order == null ? Ok($"Order with id '{orderId}' not found!") : Ok(_mapper.Map<OrderModel>(order));
+        return order == null 
+            ? Ok($"Order with id '{orderId}' not found!") 
+            : Ok(_mapper.Map<OrderModel>(order));
     }
 
     [HttpPost]
@@ -50,6 +52,14 @@ public class OrderController : ControllerBase
     {
         var orders = await _service.GetOrdersByUserIdAsync(userId);
         return orders.Count == 0 ? Ok($"User with user id '{userId}' has no orders") : Ok(_mapper.Map<List<OrderModel>>(orders));
+    }
+
+    [HttpPut("{orderId}")]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> UpdateOrder(long orderId, [FromForm] OrderUpdateModel updatedOrder)
+    {
+        var order = await _service.UpdateOrderAsync(orderId, updatedOrder);
+        return order == null ? NotFound($"Order with id '{orderId}' not found!") : Ok(_mapper.Map<OrderModel>(order));
     }
     
 }

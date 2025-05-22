@@ -21,4 +21,11 @@
       <ProjectReference Include="..\MT.Domain\MT.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\Auth\" />
+      <Folder Include="Models\Image\" />
+      <Folder Include="Models\Item\" />
+      <Folder Include="Models\Order\" />
+    </ItemGroup>
+
 </Project>

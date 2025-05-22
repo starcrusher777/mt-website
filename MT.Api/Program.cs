@@ -33,6 +33,9 @@ public class Program
         
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
         builder.Services.AddScoped<AuthService>();
+
+        builder.Services.AddScoped<IFileRepository, FileRepository>();
+        
         
         builder.Services.AddCors(options =>
         {
@@ -52,6 +55,7 @@ public class Program
         builder.Services.AddAutoMapper(typeof(OrderCreateFormProfile));
         builder.Services.AddAutoMapper(typeof(UserProfile));
         builder.Services.AddAutoMapper(typeof(UserUpdateProfile));
+        builder.Services.AddAutoMapper(typeof(OrderUpdateProfile));
         
         builder.Services.AddAuthentication(options =>
             {
