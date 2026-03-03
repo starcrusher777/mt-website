@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9q/CJ57rrcw=",
+  "dgSpecHash": "q+elJrDDGbE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Application\\MT.Application.csproj",
+  "projectFilePath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\starcrusher777\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
@@ -60,7 +60,11 @@
     "C:\\Users\\starcrusher777\\.nuget\\packages\\system.text.encodings.web\\9.0.4\\system.text.encodings.web.9.0.4.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\system.text.json\\9.0.4\\system.text.json.9.0.4.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\starcrusher777\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\starcrusher777\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.19\\microsoft.netcore.app.ref.8.0.19.nupkg.sha512",
+    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.19\\microsoft.windowsdesktop.app.ref.8.0.19.nupkg.sha512",
+    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.19\\microsoft.aspnetcore.app.ref.8.0.19.nupkg.sha512",
+    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.19\\microsoft.netcore.app.host.win-x64.8.0.19.nupkg.sha512"
   ],
   "logs": []
 }

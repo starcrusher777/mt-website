@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "sKOYYUWcHlD86JOQpHw4ocUMumSxFkHBi52DNMSIqF4=",
-  "Source": "MT.Domain",
-  "BasePath": "_content/MT.Domain",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"QDHfdS9SrseYZZ6u6VEhRpXIXhkQ1RUplr0jlhSrsLM=","Source":"MT.Domain","BasePath":"_content/MT.Domain","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

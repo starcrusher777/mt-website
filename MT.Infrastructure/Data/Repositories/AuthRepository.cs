@@ -29,7 +29,7 @@ public class AuthRepository(ApplicationContext context) : IAuthRepository
         if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             throw new Exception("Неверный пароль");
 
-        return user; // или user.Id.ToString(), если нужен ID
+        return user;
     }
 
     private void CreatePasswordHash(string password, out byte[] hash, out byte[] salt)

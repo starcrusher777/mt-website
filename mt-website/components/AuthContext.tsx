@@ -1,4 +1,4 @@
-﻿import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type AuthContextType = {
     username: string | null;
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const storedUsername = localStorage.getItem('username');
-        const storedUserId = localStorage.getItem('userId');
+        const storedUserId = localStorage.getItem('userid') ?? localStorage.getItem('userId');
 
         if (storedUsername) setUsername(storedUsername);
         if (storedUserId) setUserId(Number(storedUserId));
@@ -39,8 +39,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         if (userId !== null) {
             localStorage.setItem('userId', String(userId));
+            localStorage.setItem('userid', String(userId));
         } else {
             localStorage.removeItem('userId');
+            localStorage.removeItem('userid');
         }
     }, [userId]);
 

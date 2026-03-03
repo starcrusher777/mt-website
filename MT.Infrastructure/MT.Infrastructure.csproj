@@ -22,6 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Maps\Profiles\Order\" />
+      <Folder Include="Maps\Profiles\User\" />
       <Folder Include="Models\Auth\" />
       <Folder Include="Models\Image\" />
       <Folder Include="Models\Item\" />

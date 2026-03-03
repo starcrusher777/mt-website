@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AdCard from '../components/AdCard';
 import Link from 'next/link';
 
@@ -6,13 +6,15 @@ export default function AllAdsPage() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Order/GetOrders`)
+        fetch('/api/orders')
             .then(res => res.json())
             .then(data => {
                 console.log("ORDERS:", data);
                 setOrders(data);
             });
     }, []);
+
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5202';
 
     return (
         <div className="ads-page-container">
@@ -28,7 +30,7 @@ export default function AllAdsPage() {
                         description={order.item.description}
                         imageUrl={
                             order.item.images.length > 0
-                                ? `${process.env.NEXT_PUBLIC_API_URL}${order.item.images[0].imageUrl}`
+                                ? `${apiBase}${order.item.images[0].imageUrl}`
                                 : '/placeholder.jpg'
                         }
                     />

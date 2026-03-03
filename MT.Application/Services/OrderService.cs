@@ -18,7 +18,6 @@ public class OrderService
         _fileRepository = fileRepository;
     }
     
-
     public async Task CreateOrderAsync(OrderCreateFormModel orderModel)
     {
         var order = new OrderEntity
@@ -39,7 +38,6 @@ public class OrderService
 
         if (orderModel.Images != null)
         {
-            
             foreach (var file in orderModel.Images)
             {
                 var fileName = $"{Guid.NewGuid()}_{file.FileName}";

@@ -1,13 +1,6 @@
-﻿import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from '../../styles/UserProfile.module.css';
-
-interface Item {
-    name: string;
-    description: string;
-    price: number;
-    quantity: number;
-}
 
 interface Order {
     id: number;
@@ -15,25 +8,32 @@ interface Order {
     orderName: string;
     status: number;
     type: number;
-    item: Item;
-    itemImages: string[]; // For preview
+    item: {
+        name: string;
+        description: string;
+        price: number;
+        quantity: number;
+        images: { id: number; imageUrl: string}[];
+    }
 }
 
 export default function EditOrderPage() {
     const router = useRouter();
     const {id} = router.query;
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5202';
     const [order, setOrder] = useState<Order | null>(null);
     const [images, setImages] = useState<File[]>([]);
+    const [imagesToDelete, setImagesToDelete] = useState<number[]>([]);
 
     useEffect(() => {
         if (!id) return;
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Order/GetOrder/${id}`)
+        fetch(`/api/order/${id}`)
             .then(res => res.json())
             .then(data => {
                 setOrder(data);
             });
     }, [id]);
-
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         if (!order) return;
         const {name, value} = e.target;
@@ -51,6 +51,17 @@ export default function EditOrderPage() {
         }
     };
 
+    const handleRemoveOldImage = (imageId: number) => {
+        setOrder(prev => {
+            if (!prev) return prev;
+            return {
+                ...prev,
+                itemImages: prev.item.images.filter(img => img.id !== imageId),
+            };
+        });
+        setImagesToDelete(prev => [...prev, imageId]);
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -60,24 +71,26 @@ export default function EditOrderPage() {
         formData.append('OrderName', order.orderName);
         formData.append('Status', order.status.toString());
         formData.append('Type', order.type.toString());
-
         formData.append('Item.Name', order.item.name);
         formData.append('Item.Description', order.item.description);
         formData.append('Item.Price', order.item.price.toString());
         formData.append('Item.Quantity', order.item.quantity.toString());
-
         images.forEach((image, index) => {
             formData.append(`Images`, image);
         });
+        imagesToDelete.forEach(id => {
+            formData.append('ImagesToDelete', id.toString());
+        });
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Order/UpdateOrder/${id}`, {
+        const response = await 
+            fetch(`/api/order/${id}`, {
             method: 'PUT',
             body: formData,
         });
 
         if (response.ok) {
             alert('Объявление обновлено');
-            router.push(`/order/${id}`);
+            await router.push(`/order/${id}`);
         } else {
             alert('Ошибка при обновлении');
         }
@@ -89,20 +102,43 @@ export default function EditOrderPage() {
         <div className={styles.page}>
             <h1 className={styles.title}>Редактировать объявление</h1>
             <form onSubmit={handleSubmit} className="form" encType="multipart/form-data">
-                <input name="orderName" value={order.orderName} onChange={handleChange} className="form-input" placeholder="Название"/>
-                <input name="status" value={order.status} onChange={handleChange} className="form-input" placeholder="Статус (0 или 1)"/>
-                <input name="type" value={order.type} onChange={handleChange} className="form-input" placeholder="Тип (0 или 1)"/>
+                <input name="orderName" value={order.orderName} onChange={handleChange}
+                       className="form-input" placeholder="Название"/>
+                <input name="status" value={order.status} onChange={handleChange}
+                       className="form-input" placeholder="Статус (0 или 1)"/>
+                <input name="type" value={order.type} onChange={handleChange}
+                       className="form-input" placeholder="Тип (0 или 1)"/>
 
-                <input name="name" value={order.item.name} onChange={handleChange} className="form-input" placeholder="Имя товара"/>
-                <textarea name="description" value={order.item.description} onChange={handleChange} className="form-input"
+                <input name="name" value={order.item.name} onChange={handleChange}
+                       className="form-input" placeholder="Имя товара"/>
+                <textarea name="description" value={order.item.description} onChange={handleChange}
+                          className="form-input"
                           placeholder="Описание"/>
-                <input type="number" name="price" value={order.item.price} onChange={handleChange} className="form-input" placeholder="Цена"/>
-                <input type="number" name="quantity" value={order.item.quantity} onChange={handleChange} className="form-input"
+                <input type="number" name="price" value={order.item.price} onChange={handleChange}
+                       className="form-input" placeholder="Цена"/>
+                <input type="number" name="quantity" value={order.item.quantity} onChange={handleChange}
+                       className="form-input"
                        placeholder="Количество"/>
-
                 <input type="file" className="anime-button" multiple onChange={handleFileChange}/>
-                <button type="submit" className="anime-button">Сохранить</button>
             </form>
+            <div className={styles.imageGallery}>
+                {order.item.images.map((img, index) => (
+                    <div key={img.id} className={styles.imageWrapper}>
+                        <img src={`${apiBase}${img.imageUrl}`} alt={`Image ${index + 1}`}
+                             className={styles.thumbnail}/>
+                        <button
+                            type="button"
+                            className={styles.deleteButton}
+                            onClick={() => handleRemoveOldImage(img.id)}
+                        >
+                            ✖
+                        </button>
+                    </div>
+                ))}
+            </div>
+            <div className={styles.page}>
+                <button type="submit" className="anime-button">Сохранить</button>
+            </div>
         </div>
     );
 }

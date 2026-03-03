@@ -16,6 +16,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        // Use launchSettings.json configuration instead of hardcoded URL
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
         
         builder.Services.AddAuthorization();
@@ -41,7 +42,11 @@ public class Program
         {
             options.AddPolicy("AllowFrontend", policy =>
             {
-                policy.WithOrigins("http://localhost:3000")
+                policy.WithOrigins(
+                        "http://localhost:3000", 
+                        "http://localhost:3001",
+                        "http://127.0.0.1:3000",
+                        "http://127.0.0.1:3001")
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials();

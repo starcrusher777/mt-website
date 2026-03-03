@@ -78,11 +78,6 @@ C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\ne
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets\msbuild.MT.Application.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets\msbuild.build.MT.Application.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MT.Application.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MT.Application.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\scopedcss\bundle\MT.Application.styles.css
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Appli.336F3358.Up2Date
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.dll
@@ -90,3 +85,108 @@ C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\ne
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.pdb
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.genruntimeconfig.cache
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\ref\MT.Application.dll
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Domain.staticwebassets.endpoints.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Infrastructure.staticwebassets.endpoints.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Application.staticwebassets.endpoints.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Domain.staticwebassets.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Infrastructure.staticwebassets.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\appsettings.Development.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\appsettings.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Application.staticwebassets.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Domain.deps.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Domain.runtimeconfig.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Domain.exe
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Infrastructure.deps.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Infrastructure.runtimeconfig.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Infrastructure.exe
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Application.exe
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Application.deps.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Application.runtimeconfig.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Application.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Application.pdb
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\AutoMapper.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Azure.Core.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Azure.Identity.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.ClientModel.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Drawing.Common.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Formats.Asn1.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.IO.Pipelines.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Memory.Data.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Runtime.Caching.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Security.Permissions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Text.Json.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\System.Windows.Extensions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Domain.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Infrastructure.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Domain.pdb
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\bin\Debug\net8.0\MT.Infrastructure.pdb
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.csproj.AssemblyReference.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.AssemblyInfoInputs.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.AssemblyInfo.cs
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.csproj.CoreCompileInputs.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.MvcApplicationPartsAssemblyInfo.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\scopedcss\bundle\MT.Application.styles.css
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.build.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.development.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Appli.336F3358.Up2Date
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\refint\MT.Application.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.pdb
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.genruntimeconfig.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\ref\MT.Application.dll

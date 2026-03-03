@@ -12,14 +12,43 @@ C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets\msbuild.MT.Domain.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets\msbuild.build.MT.Domain.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MT.Domain.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MT.Domain.props
-C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\scopedcss\bundle\MT.Domain.styles.css
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.dll
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\refint\MT.Domain.dll
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.pdb
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.genruntimeconfig.cache
 C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\ref\MT.Domain.dll
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\bin\Debug\net8.0\MT.Domain.staticwebassets.endpoints.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\starcrusher777\RiderProjects\Bot\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\appsettings.Development.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\appsettings.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\MT.Domain.staticwebassets.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\MT.Domain.exe
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\MT.Domain.deps.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\MT.Domain.runtimeconfig.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\MT.Domain.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\bin\Debug\net8.0\MT.Domain.pdb
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.AssemblyInfoInputs.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.AssemblyInfo.cs
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.csproj.CoreCompileInputs.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.MvcApplicationPartsAssemblyInfo.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\scopedcss\bundle\MT.Domain.styles.css
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.build.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.development.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\refint\MT.Domain.dll
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.pdb
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.genruntimeconfig.cache
+D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\ref\MT.Domain.dll

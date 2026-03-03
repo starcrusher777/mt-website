@@ -1,34 +1,174 @@
-﻿.page {
+﻿/* User Profile Page Styles - Updated for Fandom Hub Design */
+
+.user-profile-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--bg-primary);
     min-height: 100vh;
+}
+
+.user-profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Profile Header */
+.user-profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.user-avatar-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    box-shadow: var(--shadow-button);
+}
+
+.user-profile-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+/* Profile Grid */
+.user-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.profile-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-normal);
+}
+
+.profile-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+}
+
+.profile-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(108, 92, 231, 0.3);
+    letter-spacing: -0.5px;
+}
+
+.profile-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(108, 92, 231, 0.1);
+}
+
+.profile-info-item:last-child {
+    border-bottom: none;
+}
+
+.profile-info-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    min-width: 120px;
+}
+
+.profile-info-value {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    text-align: right;
+    flex: 1;
+    word-break: break-word;
+}
+
+/* User Listings Section */
+.user-listings-section {
+    margin-top: 2rem;
+}
+
+.no-listings {
+    text-align: center;
+    padding: 3rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-card);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Legacy styles for backward compatibility */
+.page {
+    min-height: auto;
     padding: 60px 20px;
-    background: linear-gradient(135deg, #f5f7ff, #ffeefc);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #4a148c;
+    background: var(--bg-primary);
+    font-family: var(--font-primary);
+    color: var(--text-primary);
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: fadeIn 0.7s ease-in-out;
 }
 
 .title {
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 700;
     margin-bottom: 40px;
-    text-shadow: 1px 1px 2px rgba(123, 31, 162, 0.3);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
 }
 
 .info {
-    font-size: 1.3rem;
-    line-height: 2.2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
     text-align: left;
     max-width: 100%;
     width: 100%;
     padding: 0 20px;
+    color: var(--text-secondary);
 }
 
 .infoTitle {
-    font-size: 1.3rem;
-    horiz-align: center;
+    font-size: 1.1rem;
+    color: var(--text-primary);
 }
 
 .info p {
@@ -36,34 +176,30 @@
 }
 
 .info span {
-    font-weight: bold;
-    color: #6a1b9a;
+    font-weight: 600;
+    color: var(--accent-primary-start);
 }
 
 .loading {
     font-size: 1.4rem;
-    color: #7e57c2;
+    color: var(--text-secondary);
     text-align: center;
     margin-top: 100px;
 }
 
-
-.orderImage{
-    width: 50%;
-    height: 30%;
+.orderImage {
+    width: 100%;
+    height: 12rem;
     object-fit: cover;
-    border-bottom: 1px solid #eee;
 }
 
-.orderList{
-    background-color: #ffffffcc;
-    border-radius: 1rem;
+.orderList {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-card);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-fast), box-shadow var(--transition-normal);
     cursor: pointer;
-    max-width: 50%;
-    max-height: 50%;
 }
 
 .orderGrid {
@@ -73,22 +209,16 @@
 }
 
 .orderCard {
-    background-color: #ffffffcc;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-fast), box-shadow var(--transition-normal);
     overflow: hidden;
 }
 
 .orderCard:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.orderImage {
-    width: 100%;
-    height: 12rem;
-    object-fit: cover;
+    box-shadow: var(--shadow-card-hover);
 }
 
 .orderContent {
@@ -97,26 +227,63 @@
 
 .orderTitle {
     font-size: 1.125rem;
-    font-weight: bold;
-    color: #2e2e7d;
+    font-weight: 600;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .orderDescription {
     font-size: 0.95rem;
-    color: #555;
+    color: var(--text-secondary);
     margin-bottom: 0.75rem;
 }
 
 .orderPrice {
-    font-weight: bold;
-    color: #38b000;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 .noOrders {
     text-align: center;
-    color: #888;
+    color: var(--text-secondary);
     font-style: italic;
+}
+
+.imageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.imageWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.thumbnail {
+    padding-top: 1rem;
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--accent-secondary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.deleteButton:hover {
+    background: #ff4d7a;
+    transform: scale(1.1);
 }
 
 @keyframes fadeIn {
@@ -127,5 +294,60 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .user-profile-container {
+        padding: 1rem;
+    }
+
+    .user-profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+    }
+
+    .user-avatar-section {
+        width: 100%;
+    }
+
+    .user-profile-title {
+        font-size: 1.75rem;
+    }
+
+    .user-profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-info-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .profile-info-value {
+        text-align: left;
+    }
+
+    .orderGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .orderGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .user-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .user-profile-title {
+        font-size: 1.5rem;
     }
 }

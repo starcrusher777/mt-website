@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\MT.Api.csproj": {}
+    "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Api\\MT.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\MT.Api.csproj": {
+    "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Api\\MT.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\MT.Api.csproj",
+        "projectUniqueName": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Api\\MT.Api.csproj",
         "projectName": "MT.Api",
-        "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\MT.Api.csproj",
+        "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Api\\MT.Api.csproj",
         "packagesPath": "C:\\Users\\starcrusher777\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Api\\obj\\",
+        "outputPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\starcrusher777\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,14 +26,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Application\\MT.Application.csproj": {
-                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Application\\MT.Application.csproj"
+              "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj": {
+                "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj"
               },
-              "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
-                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj"
+              "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
+                "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj"
               },
-              "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj"
+              "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj": {
+                "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj"
               }
             }
           }
@@ -47,7 +47,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -89,6 +90,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -97,18 +116,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Application\\MT.Application.csproj": {
+    "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Application\\MT.Application.csproj",
+        "projectUniqueName": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj",
         "projectName": "MT.Application",
-        "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Application\\MT.Application.csproj",
+        "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj",
         "packagesPath": "C:\\Users\\starcrusher777\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Application\\obj\\",
+        "outputPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\starcrusher777\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -123,11 +142,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
-                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj"
+              "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
+                "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj"
               },
-              "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj"
+              "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj": {
+                "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj"
               }
             }
           }
@@ -141,7 +160,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -163,6 +183,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -171,18 +209,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
+    "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj",
+        "projectUniqueName": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj",
         "projectName": "MT.Domain",
-        "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj",
+        "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj",
         "packagesPath": "C:\\Users\\starcrusher777\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\obj\\",
+        "outputPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\starcrusher777\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -208,7 +246,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -224,6 +263,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -232,18 +289,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj": {
+    "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj",
         "projectName": "MT.Infrastructure",
-        "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj",
+        "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\starcrusher777\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Infrastructure\\obj\\",
+        "outputPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\starcrusher777\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -258,8 +315,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
-                "projectPath": "C:\\Users\\starcrusher777\\RiderProjects\\Bot\\MerchTrade\\MT.Domain\\MT.Domain.csproj"
+              "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
+                "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj"
               }
             }
           }
@@ -273,7 +330,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -323,6 +381,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -331,7 +407,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

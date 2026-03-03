@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import {router} from "next/client";
 import { useAuth } from '../components/AuthContext';
 
@@ -24,7 +24,8 @@ export default function AuthPage() {
         e.preventDefault();
         try {
             if (isRegistering) {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Auth/Register?`, {
+                const response = await
+                    fetch('/api/auth/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -40,7 +41,8 @@ export default function AuthPage() {
                 alert('Регистрация прошла успешно');
                 setIsRegistering(false);
             } else {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Auth/Login`, {
+                const response = await
+                    fetch('/api/auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -58,7 +60,8 @@ export default function AuthPage() {
                 
                 if (!response.ok) throw new Error(await response.text());
                 
-                const auth = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Auth/GetUser`, {
+                const auth = await
+                    fetch('/api/auth/user', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'text/plain',
