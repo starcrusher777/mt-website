@@ -15,17 +15,22 @@ The project follows **Clean Architecture** (layered architecture with dependency
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         MT.Api                                   │
-│  (ASP.NET Core Web API, controllers, JWT, CORS, Swagger)         │
+│  (ASP.NET Core, controllers, JWT, CORS, Swagger, health, Serilog)│
 └────────────────────────────┬────────────────────────────────────┘
                               │
 ┌────────────────────────────▼────────────────────────────────────┐
 │                    MT.Application                                │
-│  (Services: Auth, User, Item, Order; business logic)             │
+│  (Services: Auth, User, Item, Order; caching, business logic)    │
+└────────────────────────────┬────────────────────────────────────┘
+                              │
+┌────────────────────────────▼────────────────────────────────────┐
+│                    MT.Contracts                                  │
+│  (DTOs, ApiResponse, PagedResult, request/response models)       │
 └────────────────────────────┬────────────────────────────────────┘
                               │
 ┌────────────────────────────▼────────────────────────────────────┐
 │                      MT.Domain                                   │
-│  (Entities, repository interfaces, enums)                        │
+│  (Entities, repository interfaces, exceptions)                    │
 └────────────────────────────▲────────────────────────────────────┘
                               │
 ┌────────────────────────────┴────────────────────────────────────┐
@@ -36,12 +41,13 @@ The project follows **Clean Architecture** (layered architecture with dependency
 
 | Layer | Purpose |
 |-------|---------|
-| **MT.Api** | Entry point: REST API, JWT authentication, CORS, static files, Swagger (in Development). |
-| **MT.Application** | Application services (AuthService, UserService, ItemService, OrderService), orchestration of repositories and mapping. |
-| **MT.Domain** | Core: entities (User, Item, Order, Contacts, Socials, Personals, ItemImage), repository interfaces, enums (OrderStatus, OrderType). No dependency on other layers. |
-| **MT.Infrastructure** | Repository implementations, DbContext (SQL Server), AutoMapper profiles, DTOs/models, database migrations. |
+| **MT.Api** | Entry point: REST API, JWT, CORS, static files, Swagger (Development), **health checks** (`/health`), **Serilog** logging, **correlation ID** (`X-Correlation-Id`). |
+| **MT.Application** | Services (Auth, User, Item, Order), **IMemoryCache** for items/orders lists, orchestration of repositories and mapping. |
+| **MT.Contracts** | Shared DTOs, `ApiResponse`/`ApiErrorResponse`, `PagedResult<T>`, request/response types used by API and validation. |
+| **MT.Domain** | Core: entities, repository interfaces, `NotFoundException` and other domain exceptions. No dependency on other layers. |
+| **MT.Infrastructure** | Repository implementations, DbContext (SQL Server), AutoMapper profiles, models, migrations. |
 
-Dependencies: **Api → Application → Domain** and **Infrastructure → Domain**. The domain does not reference other projects.
+Dependencies: **Api → Application, Contracts**; **Application → Domain, Infrastructure**; **Infrastructure → Domain**. The domain does not reference other projects.
 
 ---
 
@@ -51,7 +57,9 @@ Base path: **`/api/v1/[controller]/[action]`** (API versioning).
 
 **Response format:** Successful responses are wrapped as `{ "succeeded": true, "data": ... }`. Errors return `{ "succeeded": false, "errors": [ { "code": "...", "message": "..." } ] }` with the appropriate HTTP status (400, 401, 404, 500).
 
-**Pagination:** List endpoints (GetItems, GetUsers, GetOrders) support query parameters `page` and `pageSize` (default 1 and 20). Response is `PagedResult<T>`: `items`, `totalCount`, `page`, `pageSize`, `totalPages`.
+**Health:** `GET /health` returns JSON with overall status, individual checks (e.g. database), and duration. Useful for load balancers and monitoring.
+
+**Pagination:** List endpoints (GetItems, GetUsers, GetOrders) support query parameters `page` and `pageSize` (default 1 and 20). Response is `PagedResult<T>`: `items`, `totalCount`, `page`, `pageSize`, `totalPages`. Responses are cached in memory (items/orders) with a short TTL; cache is invalidated on create/update.
 
 ### Auth (`/api/v1/Auth`)
 
@@ -88,7 +96,7 @@ Base path: **`/api/v1/[controller]/[action]`** (API versioning).
 | POST | `/api/v1/Order/CreateOrder` | Create order (`multipart/form-data`, `OrderCreateFormModel`) | — |
 | PUT | `/api/v1/Order/UpdateOrder/{orderId}` | Update order (`multipart/form-data`, `OrderUpdateModel`) | — |
 
-In **Development**, Swagger UI is available (see the Swagger URL in your launch settings).
+In **Development**, Swagger UI is available (see the Swagger URL in your launch settings). Logging uses **Serilog** (console; configurable in `appsettings.json`). Each request gets a **correlation ID** in the `X-Correlation-Id` response header for tracing.
 
 ---
 
@@ -246,9 +254,24 @@ The app listens on the port from `launchSettings.json` (often `http://localhost:
 
 The `Jwt` section (Key, Issuer, Audience) is already in `appsettings.json`. For production, change **Jwt:Key** to a strong secret and store it in User Secrets or environment variables.
 
-### 6. Frontend
+### 6. Run tests
+
+From the solution root:
+
+```bash
+dotnet test MerchTrade.sln
+```
+
+- **MT.Application.UnitTests**: xUnit + NSubstitute; tests for AuthService (login invalid/valid) and ItemService (get item not found / found).
+- **MT.Api.IntegrationTests**: WebApplicationFactory + in-memory DB; tests for GetOrders (200), Login (401 for invalid credentials), Register (200/409).
+
+### 7. Frontend
 
 CORS in `Program.cs` allows `http://localhost:3000` and `http://localhost:3001`. Run the frontend on one of these ports or add your origin to the `AllowFrontend` policy.
+
+### 8. Database backup and migrations
+
+See **[docs/DATABASE.md](docs/DATABASE.md)** for SQL Server backup/restore commands and EF Core migration rollback steps.
 
 ---
 
@@ -256,11 +279,21 @@ CORS in `Program.cs` allows `http://localhost:3000` and `http://localhost:3001`.
 
 ```
 MerchTrade.sln
-├── MT.Api/                 # Web API, controllers, configuration
-├── MT.Application/         # Application services
-├── MT.Domain/              # Entities, interfaces, enums
-└── MT.Infrastructure/      # EF Core, repositories, models, migrations
+├── MT.Api/                     # Web API, controllers, health, Serilog
+├── MT.Application/             # Application services, caching
+├── MT.Application.UnitTests/   # Unit tests (xUnit, NSubstitute)
+├── MT.Api.IntegrationTests/    # API integration tests (WebApplicationFactory)
+├── MT.Contracts/               # DTOs, ApiResponse, PagedResult
+├── MT.Domain/                  # Entities, interfaces, exceptions
+├── MT.Infrastructure/          # EF Core, repositories, migrations
+└── docs/                       # DATABASE.md (backup, restore, migrations)
 ```
+
+---
+
+## CI
+
+**GitHub Actions** (`.github/workflows/build-and-test.yml`): on push/PR to `main` or `master`, runs `dotnet restore`, `dotnet build` (Release), and `dotnet test`.
 
 ---
 
@@ -268,4 +301,4 @@ MerchTrade.sln
 
 The project is developed in spare time. Plans: more features, security, UI/UX improvements, mobile apps (iOS/Android).
 
-Suggestions for improving architecture, tech stack, and processes are in [IMPROVEMENTS.md](IMPROVEMENTS.md).
+Suggestions for improving architecture, tech stack, and processes are in [IMPROVEMENTS.md](IMPROVEMENTS.md) (if present locally).

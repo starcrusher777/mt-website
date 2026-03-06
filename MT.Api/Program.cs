@@ -12,6 +12,8 @@ using MT.Infrastructure.Maps.Profiles;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Serilog;
 
 namespace MerchTrade;
 
@@ -20,13 +22,39 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        var isTesting = string.Equals(builder.Environment.EnvironmentName, "Testing", StringComparison.OrdinalIgnoreCase);
+
+        if (!isTesting)
+        {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .Enrich.FromLogContext()
+                .Enrich.WithEnvironmentName()
+                .CreateBootstrapLogger();
+        }
+
+        try
+        {
+            if (!isTesting)
+            {
+                builder.Host.UseSerilog((context, services, configuration) => configuration
+                    .ReadFrom.Configuration(context.Configuration)
+                    .ReadFrom.Services(services)
+                    .Enrich.FromLogContext()
+                    .Enrich.WithProperty("Application", "MT.Api")
+                    .WriteTo.Console());
+            }
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
         
-        builder.Services.AddAuthorization();
-        builder.Services.AddEndpointsApiExplorer();
-        
-        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-        builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddAuthorization();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddHealthChecks()
+                .AddDbContextCheck<ApplicationContext>("database", tags: new[] { "ready" });
+
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
         builder.Services.AddScoped<OrderService>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<UserService>();
@@ -66,7 +94,17 @@ public class Program
         });
         
         builder.Services.AddSwaggerGen();
-        builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+        builder.Services.AddDbContext<ApplicationContext>(options =>
+        {
+            if (isTesting)
+                options.UseInMemoryDatabase("IntegrationTestsDb");
+            else
+            {
+                options.UseSqlServer(connectionString);
+                if (builder.Environment.IsDevelopment())
+                    options.EnableSensitiveDataLogging();
+            }
+        });
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddAutoMapper(typeof(OrderCreateFormProfile));
         builder.Services.AddAutoMapper(typeof(UserProfile));
@@ -95,6 +133,9 @@ public class Program
         var app = builder.Build();
         
         app.UseMiddleware<ExceptionMiddleware>();
+        app.UseMiddleware<CorrelationIdMiddleware>();
+        if (!isTesting)
+            app.UseSerilogRequestLogging();
         app.UseCors("AllowFrontend");
         app.UseAuthentication();
         app.UseAuthorization();
@@ -108,7 +149,34 @@ public class Program
         app.UseStaticFiles();
         app.MapControllers();
         app.UseAuthorization();
+        app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+        {
+            Predicate = _ => true,
+            ResponseWriter = async (context, report) =>
+            {
+                context.Response.ContentType = "application/json";
+                var result = System.Text.Json.JsonSerializer.Serialize(new
+                {
+                    status = report.Status.ToString(),
+                    checks = report.Entries.Select(e => new { name = e.Key, status = e.Value.Status.ToString(), description = e.Value.Description?.ToString() }),
+                    totalDuration = report.TotalDuration.TotalMilliseconds
+                });
+                await context.Response.WriteAsync(result);
+            }
+        });
         
         app.Run();
+        }
+        catch (Exception ex)
+        {
+            if (!isTesting)
+                Log.Fatal(ex, "Application terminated unexpectedly");
+            throw;
+        }
+        finally
+        {
+            if (!isTesting)
+                Log.CloseAndFlush();
+        }
     }
 }
