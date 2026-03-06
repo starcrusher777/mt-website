@@ -1,5 +1,4 @@
 using AutoMapper;
-using Microsoft.Extensions.Caching.Memory;
 using MT.Domain.Entities;
 using MT.Domain.Exceptions;
 using MT.Domain.Interfaces;
@@ -9,22 +8,17 @@ namespace MT.Application.Services;
 
 public class OrderService
 {
-    private const string CacheKeyPrefix = "orders";
-    private static readonly TimeSpan CacheTtl = TimeSpan.FromMinutes(2);
-
     private readonly IOrderRepository _orderRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IFileRepository _fileRepository;
-    private readonly IMemoryCache _cache;
-
-    public OrderService(IOrderRepository orderRepository, IUnitOfWork unitOfWork, IMapper mapper, IFileRepository fileRepository, IMemoryCache cache)
+    
+    public OrderService(IOrderRepository orderRepository, IUnitOfWork unitOfWork, IMapper mapper, IFileRepository fileRepository)
     {
         _orderRepository = orderRepository;
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _fileRepository = fileRepository;
-        _cache = cache;
     }
     
     public async Task CreateOrderAsync(OrderCreateFormModel orderModel)
@@ -68,37 +62,21 @@ public class OrderService
 
         await _orderRepository.CreateOrderAsync(order);
         await _unitOfWork.SaveChangesAsync();
-        InvalidateOrdersCache();
     }
 
     public async Task<List<OrderEntity>> GetOrdersAsync()
     {
-        var key = $"{CacheKeyPrefix}:all";
-        if (_cache.TryGetValue(key, out List<OrderEntity>? cached))
-            return cached;
         var orders = await _orderRepository.GetOrdersAsync();
-        var result = _mapper.Map<List<OrderEntity>>(orders);
-        _cache.Set(key, result, CacheTtl);
-        return result;
+        return _mapper.Map<List<OrderEntity>>(orders);
     }
 
     public async Task<(List<OrderEntity> Orders, int TotalCount)> GetOrdersPagedAsync(int page, int pageSize)
     {
-        var key = $"{CacheKeyPrefix}:paged:{page}:{pageSize}";
-        if (_cache.TryGetValue(key, out (List<OrderEntity> Orders, int TotalCount) cached))
-            return cached;
         var skip = (page - 1) * pageSize;
         var take = Math.Max(1, pageSize);
         var orders = await _orderRepository.GetOrdersAsync(skip, take);
         var total = await _orderRepository.GetOrdersCountAsync();
-        var result = (orders, total);
-        _cache.Set(key, result, CacheTtl);
-        return result;
-    }
-
-    private void InvalidateOrdersCache()
-    {
-        _cache.Remove($"{CacheKeyPrefix}:all");
+        return (orders, total);
     }
 
     public async Task<OrderEntity> GetOrderAsync(long orderId)
@@ -165,7 +143,7 @@ public class OrderService
         
         _orderRepository.UpdateOrder(order);
         await _unitOfWork.SaveChangesAsync();
-        InvalidateOrdersCache();
+
         return order;
     }
 }

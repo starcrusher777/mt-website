@@ -25,6 +25,8 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
+[Bb]in/
+[Oo]bj/
 [Oo]ut/
 [Tt]est[Rr]esult*/
 *.VisualState.xml
@@ -44,32 +46,43 @@ artifacts/
 .idea/
 *.sln.iml
 
-# User-specific
+# User-specific (optional)
 *.rsuser
+*.suo
+*.user
+*.userosscache
 *.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Aa]pp_[Dd]ata/
 
 # NuGet
 *.nupkg
 *.snupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
 
 # ASP.NET
 ScaffoldingReadMe.txt
 
 # Publish
+[Dd]ebug/
+[Rr]elease/
 [Pp]ublish/
 *.Publish.xml
 *.pubxml
 *.publishproj
 
-# Test coverage
-coverage/
-*.coverage
-*.coveragexml
-*.opencover.xml
-
-# --- Node / Next.js ---
+# --- Node / Next.js (root-level) ---
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -82,14 +95,9 @@ dist/
 .vercel
 *.tsbuildinfo
 next-env.d.ts
-
-# --- Environment & secrets ---
 .env
 .env.local
 .env.*.local
-appsettings.*.local.json
-*.pfx
-secrets.json
 
 # --- OS ---
 .DS_Store
@@ -101,8 +109,12 @@ ehthumbs.db
 Thumbs.db
 Desktop.ini
 
-# --- IDE (optional) ---
-.cursor/
+# --- Secrets / local config ---
+appsettings.*.local.json
+*.pfx
+secrets.json
+.env
+.env.*
 
 # --- Misc ---
 *.bak
