@@ -1,14 +1,16 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MT.Application.Services;
+using MT.Contracts.Common;
 using MT.Infrastructure.Models;
 
 namespace MerchTrade.Controllers;
 
-[Route("api/[controller]/[action]")]
 [ApiController]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]/[action]")]
 public class UserController : ControllerBase
 {
     private readonly IMapper _mapper;
@@ -19,43 +21,48 @@ public class UserController : ControllerBase
         _service = service;
         _mapper = mapper;
     }
-    
-    [HttpGet]
-    public async Task<IActionResult> GetUsers()
-    {
-        var users = await _service.GetUsersAsync();
 
-        return users.Count == 0 ? Ok("No users found") : Ok(_mapper.Map<List<UserModel>>(users));
+    [HttpGet]
+    public async Task<IActionResult> GetUsers([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    {
+        if (pageSize <= 0) pageSize = 20;
+        if (page <= 0) page = 1;
+        var (users, totalCount) = await _service.GetUsersPagedAsync(page, pageSize);
+        var data = _mapper.Map<List<UserModel>>(users);
+        var paged = new PagedResult<UserModel>
+        {
+            Items = data,
+            TotalCount = totalCount,
+            Page = page,
+            PageSize = pageSize
+        };
+        return Ok(paged);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetUser(long userId)
+    public async Task<IActionResult> GetUser(long id)
     {
-        var user = await _service.GetUserAsync(userId);
-
-        return user == null ? NotFound($"User with id '{userId}' not found!") : Ok(_mapper.Map<UserModel>(user));
+        var user = await _service.GetUserAsync(id);
+        return Ok(_mapper.Map<UserModel>(user));
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateUser(UserModel user)
+    public async Task<IActionResult> CreateUser(UserModel user)
     {
-        user.CreatedAt = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-        
+        user.CreatedAt = DateTime.UtcNow;
         await _service.CreateUserAsync(user);
-        
-        user.Password = null;
-        
+        user.Password = string.Empty;
         return Ok(_mapper.Map<UserModel>(user));
     }
 
     [HttpPut("{id}")]
     [Authorize]
-    public async Task<ActionResult> UpdateUser([FromRoute(Name = "id")] long userId, [FromBody] UserUpdateModel updatedUser)
+    public async Task<IActionResult> UpdateUser([FromRoute(Name = "id")] long userId, [FromBody] UserUpdateModel updatedUser)
     {
         var userIdFromToken = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (userIdFromToken == null || userIdFromToken != userId.ToString())
             return Unauthorized();
         var user = await _service.UpdateUserAsync(userId, updatedUser);
-        return user == null ? Ok($"User with id '{userId}' not found!") : Ok(_mapper.Map<UserModel>(user));
+        return Ok(_mapper.Map<UserModel>(user));
     }
 }

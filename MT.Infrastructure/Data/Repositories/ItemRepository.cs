@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MT.Domain.Entities;
 using MT.Domain.Interfaces;
 
@@ -10,16 +10,28 @@ public class ItemRepository(ApplicationContext context) : IItemRepository
     {
         return await context.Items.ToListAsync();
     }
+
+    public async Task<List<ItemEntity>> GetItemsAsync(int skip, int take)
+    {
+        return await context.Items
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync();
+    }
+
+    public async Task<int> GetItemsCountAsync()
+    {
+        return await context.Items.CountAsync();
+    }
     
     public async Task<ItemEntity?> GetItemAsync(long itemId)
     {
         return await context.Items.FindAsync(itemId);
     }
     
-    public async Task<ItemEntity> CreateItemAsync (ItemEntity itemEntity)
+    public async Task<ItemEntity> CreateItemAsync(ItemEntity itemEntity)
     {
         await context.Items.AddAsync(itemEntity);
-        await context.SaveChangesAsync();
         return itemEntity;
     }
 }

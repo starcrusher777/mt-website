@@ -17,7 +17,7 @@ export default async function handler(
     }
 
     try {
-        const response = await fetch(`${API_URL}/api/Auth/GetUser`, {
+        const response = await fetch(`${API_URL}/api/v1/Auth/GetUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'text/plain',

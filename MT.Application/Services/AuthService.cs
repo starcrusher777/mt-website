@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AutoMapper;
@@ -12,12 +12,14 @@ namespace MT.Application.Services;
 public class AuthService
 {
     private readonly IAuthRepository _authRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IConfiguration _config;
 
-    public AuthService(IAuthRepository authRepository, IMapper mapper, IConfiguration config)
+    public AuthService(IAuthRepository authRepository, IUnitOfWork unitOfWork, IMapper mapper, IConfiguration config)
     {
         _authRepository = authRepository;
+        _unitOfWork = unitOfWork;
         _mapper = mapper;
         _config = config;
     }
@@ -31,13 +33,14 @@ public class AuthService
         };
         
         await _authRepository.RegisterAsync(user, registerModel.Password);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     public async Task<(string token, UserEntity user)> LoginAsync(LoginModel loginModel)
     {
         var user = await _authRepository.LoginAsync(loginModel.Email, loginModel.Password);
         if (user == null)
-            throw new UnauthorizedAccessException("Неверный email или пароль");
+            throw new UnauthorizedAccessException("Invalid email or password");
         var token = GenerateJwtToken(user);
         return (token, user);
     }

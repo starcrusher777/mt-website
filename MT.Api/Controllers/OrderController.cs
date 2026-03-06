@@ -1,12 +1,14 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MT.Application.Services;
+using MT.Contracts.Common;
 using MT.Infrastructure.Models;
 
 namespace MerchTrade.Controllers;
 
-[Route("api/[controller]/[action]")]
 [ApiController]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]/[action]")]
 public class OrderController : ControllerBase
 {
     private readonly OrderService _service;
@@ -19,39 +21,43 @@ public class OrderController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetOrders()
+    public async Task<IActionResult> GetOrders([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
-        var orders = await _service.GetOrdersAsync();
-
-        return orders.Count == 0 ? Ok("No orders found") : Ok(_mapper.Map<List<OrderModel>>(orders));
+        if (pageSize <= 0) pageSize = 20;
+        if (page <= 0) page = 1;
+        var (orders, totalCount) = await _service.GetOrdersPagedAsync(page, pageSize);
+        var data = _mapper.Map<List<OrderModel>>(orders);
+        var paged = new PagedResult<OrderModel>
+        {
+            Items = data,
+            TotalCount = totalCount,
+            Page = page,
+            PageSize = pageSize
+        };
+        return Ok(paged);
     }
 
     [HttpGet("{orderId}")]
     public async Task<IActionResult> GetOrder(long orderId)
     {
         var order = await _service.GetOrderAsync(orderId);
-        
-        return order == null 
-            ? Ok($"Order with id '{orderId}' not found!") 
-            : Ok(_mapper.Map<OrderModel>(order));
+        return Ok(_mapper.Map<OrderModel>(order));
     }
 
     [HttpPost]
     [Consumes("multipart/form-data")]
     public async Task<IActionResult> CreateOrder(OrderCreateFormModel order)
     {
-        order.CreatedAt = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-        
+        order.CreatedAt = DateTime.UtcNow;
         await _service.CreateOrderAsync(order);
-        
         return Ok(_mapper.Map<OrderCreateFormModel>(order));
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetOrdersByUserIdAsync(long userId)
+    [HttpGet("by-user/{id}")]
+    public async Task<IActionResult> GetOrdersByUserId(long id)
     {
-        var orders = await _service.GetOrdersByUserIdAsync(userId);
-        return orders.Count == 0 ? Ok($"User with user id '{userId}' has no orders") : Ok(_mapper.Map<List<OrderModel>>(orders));
+        var orders = await _service.GetOrdersByUserIdAsync(id);
+        return Ok(_mapper.Map<List<OrderModel>>(orders));
     }
 
     [HttpPut("{orderId}")]
@@ -59,7 +65,6 @@ public class OrderController : ControllerBase
     public async Task<IActionResult> UpdateOrder(long orderId, [FromForm] OrderUpdateModel updatedOrder)
     {
         var order = await _service.UpdateOrderAsync(orderId, updatedOrder);
-        return order == null ? NotFound($"Order with id '{orderId}' not found!") : Ok(_mapper.Map<OrderModel>(order));
+        return Ok(_mapper.Map<OrderModel>(order));
     }
-    
 }

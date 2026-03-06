@@ -190,3 +190,33 @@ D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\ref
 D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.pdb
 D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\MT.Application.genruntimeconfig.cache
 D:\Programming\CSharp\Last update\MerchTrade\MT.Application\obj\Debug\net8.0\ref\MT.Application.dll
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Domain.staticwebassets.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Infrastructure.staticwebassets.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Application.staticwebassets.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Application.deps.json
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Application.dll
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Application.pdb
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Domain.dll
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Infrastructure.dll
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Domain.pdb
+D:\Programming\GitHub\mt-website\MT.Application\bin\Debug\net8.0\MT.Infrastructure.pdb
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.csproj.AssemblyReference.cache
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.AssemblyInfoInputs.cache
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.AssemblyInfo.cs
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.csproj.CoreCompileInputs.cache
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.sourcelink.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\scopedcss\bundle\MT.Application.styles.css
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\staticwebassets.build.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\staticwebassets.development.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Appli.336F3358.Up2Date
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.dll
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\refint\MT.Application.dll
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\MT.Application.pdb
+D:\Programming\GitHub\mt-website\MT.Application\obj\Debug\net8.0\ref\MT.Application.dll

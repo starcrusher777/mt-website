@@ -9,7 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
           <PrivateAssets>all</PrivateAssets>
@@ -24,6 +27,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MT.Application\MT.Application.csproj" />
+      <ProjectReference Include="..\MT.Contracts\MT.Contracts.csproj" />
       <ProjectReference Include="..\MT.Domain\MT.Domain.csproj" />
       <ProjectReference Include="..\MT.Infrastructure\MT.Infrastructure.csproj" />
     </ItemGroup>

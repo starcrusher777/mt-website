@@ -12,7 +12,7 @@ export default async function handler(
     }
 
     try {
-        const response = await fetch(`${API_URL}/api/Auth/Login`, {
+        const response = await fetch(`${API_URL}/api/v1/Auth/Login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(req.body),

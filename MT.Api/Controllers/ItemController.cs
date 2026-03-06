@@ -1,12 +1,14 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MT.Application.Services;
+using MT.Contracts.Common;
 using MT.Infrastructure.Models;
 
 namespace MerchTrade.Controllers;
 
-[Route("api/[controller]/[action]")]
 [ApiController]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]/[action]")]
 public class ItemController : ControllerBase
 {
     private readonly IMapper _mapper;
@@ -17,35 +19,36 @@ public class ItemController : ControllerBase
         _mapper = mapper;
         _service = service;
     }
-    
-    [HttpGet]
-    public async Task<IActionResult> GetItems()
-    {
-        var items = await _service.GetItemsAsync();
 
-        return items.Count == 0 ? Ok("No items found") : Ok(_mapper.Map<List<ItemModel>>(items));
+    [HttpGet]
+    public async Task<IActionResult> GetItems([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    {
+        if (pageSize <= 0) pageSize = 20;
+        if (page <= 0) page = 1;
+        var (items, totalCount) = await _service.GetItemsPagedAsync(page, pageSize);
+        var data = _mapper.Map<List<ItemModel>>(items);
+        var paged = new PagedResult<ItemModel>
+        {
+            Items = data,
+            TotalCount = totalCount,
+            Page = page,
+            PageSize = pageSize
+        };
+        return Ok(paged);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItem(long itemId)
+    public async Task<IActionResult> GetItem(long id)
     {
-        var item = await _service.GetItemAsync(itemId);
-        
-        if (item == null)
-        {
-            return NotFound($"Item with id '{itemId}' not found!");
-        }
-
+        var item = await _service.GetItemAsync(id);
         return Ok(_mapper.Map<ItemModel>(item));
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateItem(ItemModel item)
+    public async Task<IActionResult> CreateItem(ItemModel item)
     {
-        item.CreatedAt = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-        
+        item.CreatedAt = DateTime.UtcNow;
         await _service.CreateItemAsync(item);
-        
         return Ok(_mapper.Map<ItemModel>(item));
     }
 }

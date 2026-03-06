@@ -42,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           />
           {(isPreorder || isOriginal) && (
             <span className="product-tag">
-              {isPreorder ? 'Пре-ордер' : 'Оригинал'}
+              {isPreorder ? 'Pre-order' : 'Original'}
             </span>
           )}
           <button

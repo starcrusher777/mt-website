@@ -38,7 +38,7 @@ const Navbar = () => {
                     {username ? (
                         <>
                             <Link href="/createNew" className="icon-button" title="Create ad" style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', borderRadius: '8px' }}>
-                                Разместить
+                                Post listing
                             </Link>
                             <Link href={`/user/${userId}?userId=${userId}`} className="icon-button" title="Profile">
                                 <UserIcon width={22} height={22} />

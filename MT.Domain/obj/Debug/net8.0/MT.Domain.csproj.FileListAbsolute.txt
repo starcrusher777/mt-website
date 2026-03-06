@@ -52,3 +52,25 @@ D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\refint\M
 D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.pdb
 D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\MT.Domain.genruntimeconfig.cache
 D:\Programming\CSharp\Last update\MerchTrade\MT.Domain\obj\Debug\net8.0\ref\MT.Domain.dll
+D:\Programming\GitHub\mt-website\MT.Domain\bin\Debug\net8.0\MT.Domain.staticwebassets.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Domain\bin\Debug\net8.0\MT.Domain.deps.json
+D:\Programming\GitHub\mt-website\MT.Domain\bin\Debug\net8.0\MT.Domain.dll
+D:\Programming\GitHub\mt-website\MT.Domain\bin\Debug\net8.0\MT.Domain.pdb
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\MT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\MT.Domain.AssemblyInfoInputs.cache
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\MT.Domain.AssemblyInfo.cs
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\MT.Domain.csproj.CoreCompileInputs.cache
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\MT.Domain.sourcelink.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\scopedcss\bundle\MT.Domain.styles.css
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\staticwebassets.build.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\staticwebassets.development.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\MT.Domain.dll
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\refint\MT.Domain.dll
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\MT.Domain.pdb
+D:\Programming\GitHub\mt-website\MT.Domain\obj\Debug\net8.0\ref\MT.Domain.dll

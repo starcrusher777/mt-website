@@ -89,36 +89,36 @@ export default function EditOrderPage() {
         });
 
         if (response.ok) {
-            alert('Объявление обновлено');
+            alert('Listing updated');
             await router.push(`/order/${id}`);
         } else {
-            alert('Ошибка при обновлении');
+            alert('Update failed');
         }
     };
 
-    if (!order) return <div>Загрузка...</div>;
+    if (!order) return <div>Loading...</div>;
 
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>Редактировать объявление</h1>
+            <h1 className={styles.title}>Edit listing</h1>
             <form onSubmit={handleSubmit} className="form" encType="multipart/form-data">
                 <input name="orderName" value={order.orderName} onChange={handleChange}
-                       className="form-input" placeholder="Название"/>
+                       className="form-input" placeholder="Title"/>
                 <input name="status" value={order.status} onChange={handleChange}
-                       className="form-input" placeholder="Статус (0 или 1)"/>
+                       className="form-input" placeholder="Status (0 or 1)"/>
                 <input name="type" value={order.type} onChange={handleChange}
-                       className="form-input" placeholder="Тип (0 или 1)"/>
+                       className="form-input" placeholder="Type (0 or 1)"/>
 
                 <input name="name" value={order.item.name} onChange={handleChange}
-                       className="form-input" placeholder="Имя товара"/>
+                       className="form-input" placeholder="Item name"/>
                 <textarea name="description" value={order.item.description} onChange={handleChange}
                           className="form-input"
-                          placeholder="Описание"/>
+                          placeholder="Description"/>
                 <input type="number" name="price" value={order.item.price} onChange={handleChange}
-                       className="form-input" placeholder="Цена"/>
+                       className="form-input" placeholder="Price"/>
                 <input type="number" name="quantity" value={order.item.quantity} onChange={handleChange}
                        className="form-input"
-                       placeholder="Количество"/>
+                       placeholder="Quantity"/>
                 <input type="file" className="anime-button" multiple onChange={handleFileChange}/>
             </form>
             <div className={styles.imageGallery}>
@@ -137,7 +137,7 @@ export default function EditOrderPage() {
                 ))}
             </div>
             <div className={styles.page}>
-                <button type="submit" className="anime-button">Сохранить</button>
+                <button type="submit" className="anime-button">Save</button>
             </div>
         </div>
     );

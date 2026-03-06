@@ -2887,11 +2887,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj",
+      "projectUniqueName": "D:\\Programming\\GitHub\\mt-website\\MT.Application\\MT.Application.csproj",
       "projectName": "MT.Application",
-      "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\MT.Application.csproj",
+      "projectPath": "D:\\Programming\\GitHub\\mt-website\\MT.Application\\MT.Application.csproj",
       "packagesPath": "C:\\Users\\starcrusher777\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Application\\obj\\",
+      "outputPath": "D:\\Programming\\GitHub\\mt-website\\MT.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\starcrusher777\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2906,11 +2906,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj": {
-              "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj"
+            "D:\\Programming\\GitHub\\mt-website\\MT.Domain\\MT.Domain.csproj": {
+              "projectPath": "D:\\Programming\\GitHub\\mt-website\\MT.Domain\\MT.Domain.csproj"
             },
-            "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj": {
-              "projectPath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Infrastructure\\MT.Infrastructure.csproj"
+            "D:\\Programming\\GitHub\\mt-website\\MT.Infrastructure\\MT.Infrastructure.csproj": {
+              "projectPath": "D:\\Programming\\GitHub\\mt-website\\MT.Infrastructure\\MT.Infrastructure.csproj"
             }
           }
         }
@@ -2950,10 +2950,6 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.19, 8.0.19]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[8.0.19, 8.0.19]"
           },
           {

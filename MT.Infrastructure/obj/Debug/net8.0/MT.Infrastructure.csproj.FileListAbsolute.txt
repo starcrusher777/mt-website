@@ -178,3 +178,30 @@ D:\Programming\CSharp\Last update\MerchTrade\MT.Infrastructure\obj\Debug\net8.0\
 D:\Programming\CSharp\Last update\MerchTrade\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.pdb
 D:\Programming\CSharp\Last update\MerchTrade\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.genruntimeconfig.cache
 D:\Programming\CSharp\Last update\MerchTrade\MT.Infrastructure\obj\Debug\net8.0\ref\MT.Infrastructure.dll
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.csproj.AssemblyReference.cache
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.AssemblyInfoInputs.cache
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.AssemblyInfo.cs
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.sourcelink.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.dll
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\refint\MT.Infrastructure.dll
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infrastructure.pdb
+D:\Programming\GitHub\mt-website\MT.Infrastructure\bin\Debug\net8.0\MT.Domain.staticwebassets.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\bin\Debug\net8.0\MT.Infrastructure.staticwebassets.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\bin\Debug\net8.0\MT.Infrastructure.deps.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\bin\Debug\net8.0\MT.Infrastructure.dll
+D:\Programming\GitHub\mt-website\MT.Infrastructure\bin\Debug\net8.0\MT.Infrastructure.pdb
+D:\Programming\GitHub\mt-website\MT.Infrastructure\bin\Debug\net8.0\MT.Domain.dll
+D:\Programming\GitHub\mt-website\MT.Infrastructure\bin\Debug\net8.0\MT.Domain.pdb
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\scopedcss\bundle\MT.Infrastructure.styles.css
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\staticwebassets.build.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\staticwebassets.development.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\MT.Infra.30B89062.Up2Date
+D:\Programming\GitHub\mt-website\MT.Infrastructure\obj\Debug\net8.0\ref\MT.Infrastructure.dll

@@ -18,13 +18,15 @@ export default async function handler(
 
     try {
         const response = await fetch(
-            `${API_URL}/api/Order/GetOrdersByUserId/${id}?userId=${id}`
+            `${API_URL}/api/v1/Order/GetOrdersByUserId/by-user/${id}`
         );
         if (!response.ok) {
-            return res.status(response.status).json({ error: 'Failed to get orders' });
+            const errBody = await response.json().catch(() => ({}));
+            return res.status(response.status).json({ error: errBody.errors?.[0]?.message ?? 'Failed to get orders' });
         }
-        const data = await response.json();
-        res.status(200).json(data);
+        const body = await response.json();
+        const data = body.data?.items ?? body.data ?? body;
+        res.status(200).json(Array.isArray(data) ? data : body);
     } catch (err) {
         console.error('Orders by user proxy error:', err);
         res.status(502).json({ error: 'Failed to reach API.' });

@@ -1,5 +1,9 @@
+using FluentValidation;
+using MerchTrade.Filters;
+using MerchTrade.Middleware;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using MT.Application.Services;
 using MT.Domain.Interfaces;
 using MT.Infrastructure.Data;
@@ -16,27 +20,35 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        // Use launchSettings.json configuration instead of hardcoded URL
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
         
         builder.Services.AddAuthorization();
-        
         builder.Services.AddEndpointsApiExplorer();
         
+        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();
         builder.Services.AddScoped<OrderService>();
-        
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<UserService>();
-        
         builder.Services.AddScoped<IItemRepository, ItemRepository>();
         builder.Services.AddScoped<ItemService>();
-        
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
         builder.Services.AddScoped<AuthService>();
-
         builder.Services.AddScoped<IFileRepository, FileRepository>();
         
+        builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+        builder.Services.AddControllers(options =>
+        {
+            options.Filters.Add<ValidationFilter>();
+            options.Filters.Add<ApiResponseResultFilter>();
+        });
+        builder.Services.AddApiVersioning(options =>
+        {
+            options.DefaultApiVersion = new ApiVersion(1, 0);
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.ReportApiVersions = true;
+            options.ApiVersionReader = new UrlSegmentApiVersionReader();
+        });
         
         builder.Services.AddCors(options =>
         {
@@ -54,7 +66,6 @@ public class Program
         });
         
         builder.Services.AddSwaggerGen();
-        builder.Services.AddControllers();
         builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddAutoMapper(typeof(OrderCreateFormProfile));
@@ -83,6 +94,7 @@ public class Program
 
         var app = builder.Build();
         
+        app.UseMiddleware<ExceptionMiddleware>();
         app.UseCors("AllowFrontend");
         app.UseAuthentication();
         app.UseAuthorization();

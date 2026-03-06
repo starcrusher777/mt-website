@@ -56,7 +56,7 @@ export default function EditProfilePage() {
         e.preventDefault();
         const token = localStorage.getItem("jwt");
         if (!token) {
-            alert("Вы не авторизованы");
+            alert("You are not logged in");
             return;
         }
         
@@ -70,39 +70,39 @@ export default function EditProfilePage() {
         });
         
         if (response.ok) {
-            alert('Профиль обновлен');
+            alert('Profile updated');
             await router.push(`/user/${id}?userId=${id}`);
         } else {
-            alert('Ошибка обновления');
+            alert('Update failed');
         }
     };
 
-    if (loading || !user) return <div>Загрузка...</div>;
+    if (loading || !user) return <div>Loading...</div>;
 
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>Редактировать профиль</h1>
+            <h1 className={styles.title}>Edit profile</h1>
             <form onSubmit={handleSubmit} className="form">
-                <h3 className={styles.title}>Персональные данные</h3>
-                <input type="text" name="firstName" placeholder="Имя" 
+                <h3 className={styles.title}>Personal data</h3>
+                <input type="text" name="firstName" placeholder="First name" 
                        value={user.personals.firstName || ''} 
                        onChange={handleChange} className="form-input"/>
-                <input type="text" name="lastName" placeholder="Фамилия" 
+                <input type="text" name="lastName" placeholder="Last name" 
                        value={user.personals.lastName || ''} 
                        onChange={handleChange} className="form-input"/>
 
-                <h3 className={styles.title}>Контакты</h3>
+                <h3 className={styles.title}>Contacts</h3>
                 <input type="email" name="email" placeholder="Email" 
                        value={user.contacts.email || ''} 
                        onChange={handleChange} className="form-input"/>
-                <input type="tel" name="telephone" placeholder="Телефон" 
+                <input type="tel" name="telephone" placeholder="Phone" 
                        value={user.contacts.telephone || ''} 
                        onChange={handleChange} className="form-input"/>
-                <input type="text" name="address" placeholder="Адрес" 
+                <input type="text" name="address" placeholder="Address" 
                        value={user.contacts.address || ''} 
                        onChange={handleChange} className="form-input"/>
 
-                <h3 className={styles.title}>Социальные сети</h3>
+                <h3 className={styles.title}>Social networks</h3>
                 <input type="text" name="telegram" placeholder="Telegram" 
                        value={user.socials.telegram || ''} 
                        onChange={handleChange} className="form-input"/>
@@ -117,7 +117,7 @@ export default function EditProfilePage() {
                        value={user.socials.twitter || ''} 
                        onChange={handleChange} className="form-input"/>
                 <br />
-                <button type="submit" className="anime-button">Сохранить изменения</button>
+                <button type="submit" className="anime-button">Save changes</button>
             </form>
         </div>
     );

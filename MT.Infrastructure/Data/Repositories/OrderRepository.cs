@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MT.Domain.Entities;
 using MT.Domain.Interfaces;
 
@@ -13,6 +13,22 @@ public class OrderRepository(ApplicationContext context) : IOrderRepository
             .ThenInclude(i => i.Images)
             .ToListAsync();
     }
+
+    public async Task<List<OrderEntity>> GetOrdersAsync(int skip, int take)
+    {
+        return await context.Orders
+            .Include(o => o.Item)
+            .ThenInclude(i => i.Images)
+            .OrderBy(o => o.Id)
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync();
+    }
+
+    public async Task<int> GetOrdersCountAsync()
+    {
+        return await context.Orders.CountAsync();
+    }
     
     public async Task<OrderEntity?> GetOrderAsync(long orderId)
     {
@@ -22,10 +38,9 @@ public class OrderRepository(ApplicationContext context) : IOrderRepository
             .FirstOrDefaultAsync(o => o.Id == orderId);
     }
     
-    public async Task<OrderEntity> CreateOrderAsync (OrderEntity orderEntity)
+    public async Task<OrderEntity> CreateOrderAsync(OrderEntity orderEntity)
     {
         await context.Orders.AddAsync(orderEntity);
-        await context.SaveChangesAsync();
         return orderEntity;
     }
 
@@ -42,10 +57,5 @@ public class OrderRepository(ApplicationContext context) : IOrderRepository
     public void UpdateOrder(OrderEntity orderEntity)
     {
         context.Orders.Update(orderEntity);
-    }
-
-    public async Task SaveChangesAsync()
-    {
-        await context.SaveChangesAsync();
     }
 }

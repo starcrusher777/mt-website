@@ -12,7 +12,7 @@ export default async function handler(
     }
 
     try {
-        const response = await fetch(`${API_URL}/api/Auth/Register`, {
+        const response = await fetch(`${API_URL}/api/v1/Auth/Register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(req.body),

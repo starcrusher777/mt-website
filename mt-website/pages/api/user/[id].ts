@@ -14,12 +14,14 @@ export default async function handler(
     if (req.method === 'GET') {
         try {
             const response = await fetch(
-                `${API_URL}/api/User/GetUser/${id}?userId=${id}`
+                `${API_URL}/api/v1/User/GetUser/${id}`
             );
             if (!response.ok) {
-                return res.status(response.status).json({ error: 'Failed to get user' });
+                const errBody = await response.json().catch(() => ({}));
+                return res.status(response.status).json({ error: errBody.errors?.[0]?.message ?? 'Failed to get user' });
             }
-            const data = await response.json();
+            const body = await response.json();
+            const data = body.data ?? body;
             return res.status(200).json(data);
         } catch (err) {
             console.error('User get proxy error:', err);
@@ -34,7 +36,7 @@ export default async function handler(
         }
         try {
             const response = await fetch(
-                `${API_URL}/api/User/UpdateUser/${id}?userId=${id}`,
+                `${API_URL}/api/v1/User/UpdateUser/${id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -47,7 +49,8 @@ export default async function handler(
             if (!response.ok) {
                 return res.status(response.status).json({ error: 'Update failed' });
             }
-            const data = await response.json().catch(() => ({}));
+            const body = await response.json().catch(() => ({}));
+            const data = body.data ?? body;
             return res.status(200).json(data);
         } catch (err) {
             console.error('User update proxy error:', err);

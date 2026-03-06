@@ -23,7 +23,7 @@ export default async function handler(
         const body = Buffer.concat(chunks);
         const contentType = req.headers['content-type'] || '';
 
-        const response = await fetch(`${API_URL}/api/Order/CreateOrder`, {
+        const response = await fetch(`${API_URL}/api/v1/Order/CreateOrder`, {
             method: 'POST',
             headers: contentType ? { 'Content-Type': contentType } : undefined,
             body,
@@ -33,7 +33,8 @@ export default async function handler(
             const text = await response.text();
             return res.status(response.status).send(text);
         }
-        const data = await response.json().catch(() => ({}));
+        const body = await response.json().catch(() => ({}));
+        const data = body.data ?? body;
         res.status(200).json(data);
     } catch (err) {
         console.error('Order create proxy error:', err);

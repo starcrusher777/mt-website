@@ -35,7 +35,8 @@ export default function HomePage() {
                     throw new Error(body.error || `HTTP ${res.status}`);
                 }
                 const data = await res.json();
-                const shuffled = data.sort(() => 0.5 - Math.random());
+                const list = Array.isArray(data) ? data : (data?.items ?? []);
+                const shuffled = list.sort(() => 0.5 - Math.random());
                 setOrders(shuffled);
                 setPopularOrders(shuffled.slice(0, 6));
                 setRecommendedOrders(shuffled.slice(6, 14));

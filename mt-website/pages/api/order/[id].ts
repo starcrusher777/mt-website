@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5202';
+const API_V1 = `${API_URL}/api/v1`;
 
 export const config = {
     api: { bodyParser: false },
@@ -17,11 +18,13 @@ export default async function handler(
 
     if (req.method === 'GET') {
         try {
-            const response = await fetch(`${API_URL}/api/Order/GetOrder/${id}`);
+            const response = await fetch(`${API_V1}/Order/GetOrder/${id}`);
             if (!response.ok) {
-                return res.status(response.status).json({ error: 'Failed to get order' });
+                const errBody = await response.json().catch(() => ({}));
+                return res.status(response.status).json({ error: errBody.errors?.[0]?.message ?? 'Failed to get order' });
             }
-            const data = await response.json();
+            const body = await response.json();
+            const data = body.data ?? body;
             return res.status(200).json(data);
         } catch (err) {
             console.error('Order get proxy error:', err);
@@ -38,7 +41,7 @@ export default async function handler(
             const body = Buffer.concat(chunks);
             const contentType = req.headers['content-type'] || '';
 
-            const response = await fetch(`${API_URL}/api/Order/UpdateOrder/${id}`, {
+            const response = await fetch(`${API_V1}/Order/UpdateOrder/${id}`, {
                 method: 'PUT',
                 headers: contentType ? { 'Content-Type': contentType } : undefined,
                 body,
@@ -47,7 +50,8 @@ export default async function handler(
                 const text = await response.text();
                 return res.status(response.status).send(text);
             }
-            const data = await response.json().catch(() => ({}));
+            const body = await response.json().catch(() => ({}));
+            const data = body.data ?? body;
             return res.status(200).json(data);
         } catch (err) {
             console.error('Order update proxy error:', err);

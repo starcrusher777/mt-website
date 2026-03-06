@@ -38,7 +38,7 @@ export default function AuthPage() {
                 });
 
                 if (!response.ok) throw new Error(await response.text());
-                alert('Регистрация прошла успешно');
+                alert('Registration completed successfully');
                 setIsRegistering(false);
             } else {
                 const response = await
@@ -69,7 +69,7 @@ export default function AuthPage() {
                     },
                     credentials: 'include'
                 });
-                if (!auth.ok) throw new Error('Не удалось получить пользователя');
+                if (!auth.ok) throw new Error('Failed to get user');
 
                 const user = await auth.json();
                 localStorage.setItem('username', user.username);
@@ -81,20 +81,20 @@ export default function AuthPage() {
                 
             }
         } catch (err) {
-            alert(err.message || 'Произошла ошибка');
+            alert(err.message || 'An error occurred');
         }
     };
 
     return (
         <div className="form-container">
-            <h1 className="form-title">{isRegistering ? 'Регистрация' : 'Вход'}</h1>
+            <h1 className="form-title">{isRegistering ? 'Register' : 'Log in'}</h1>
             <form onSubmit={handleSubmit} className="form" encType="multipart/form-data">
                 {isRegistering && (
                     <div>
                         <input
                             type="text"
                             name="username"
-                            placeholder="Имя пользователя"
+                            placeholder="Username"
                             value={formData.username}
                             onChange={handleChange}
                             required
@@ -117,7 +117,7 @@ export default function AuthPage() {
                     <input
                         type="password"
                         name="password"
-                        placeholder="Пароль"
+                        placeholder="Password"
                         value={formData.password}
                         onChange={handleChange}
                         required
@@ -125,12 +125,12 @@ export default function AuthPage() {
                     />
                 </div>
                 <button type="submit" className="register-button">
-                    {isRegistering ? 'Зарегистрироваться' : 'Войти'}
+                    {isRegistering ? 'Register' : 'Log in'}
                 </button>
             </form>
             <div className="form-title">
                 <button onClick={() => setIsRegistering(!isRegistering)} className="register-button">
-                    {isRegistering ? 'Уже есть аккаунт? Войти' : 'Нет аккаунта? Зарегистрироваться'}
+                    {isRegistering ? 'Already have an account? Log in' : 'No account? Register'}
                 </button>
             </div>
 

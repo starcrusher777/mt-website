@@ -1,5 +1,6 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MT.Domain.Entities;
+using MT.Domain.Exceptions;
 using MT.Domain.Interfaces;
 using MT.Infrastructure.Models;
 
@@ -8,12 +9,14 @@ namespace MT.Application.Services;
 public class OrderService
 {
     private readonly IOrderRepository _orderRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IFileRepository _fileRepository;
     
-    public OrderService(IOrderRepository orderRepository, IMapper mapper, IFileRepository fileRepository)
+    public OrderService(IOrderRepository orderRepository, IUnitOfWork unitOfWork, IMapper mapper, IFileRepository fileRepository)
     {
         _orderRepository = orderRepository;
+        _unitOfWork = unitOfWork;
         _mapper = mapper;
         _fileRepository = fileRepository;
     }
@@ -54,10 +57,11 @@ public class OrderService
         }
         else
         {
-            Console.WriteLine("Файлы не получены");
+            Console.WriteLine("No files received");
         }
 
         await _orderRepository.CreateOrderAsync(order);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     public async Task<List<OrderEntity>> GetOrdersAsync()
@@ -66,9 +70,20 @@ public class OrderService
         return _mapper.Map<List<OrderEntity>>(orders);
     }
 
-    public async Task<OrderEntity?> GetOrderAsync(long orderId)
+    public async Task<(List<OrderEntity> Orders, int TotalCount)> GetOrdersPagedAsync(int page, int pageSize)
+    {
+        var skip = (page - 1) * pageSize;
+        var take = Math.Max(1, pageSize);
+        var orders = await _orderRepository.GetOrdersAsync(skip, take);
+        var total = await _orderRepository.GetOrdersCountAsync();
+        return (orders, total);
+    }
+
+    public async Task<OrderEntity> GetOrderAsync(long orderId)
     {
         var order = await _orderRepository.GetOrderAsync(orderId);
+        if (order == null)
+            throw new NotFoundException("Order", orderId);
         return _mapper.Map<OrderEntity>(order);
     }
 
@@ -78,10 +93,11 @@ public class OrderService
         return orders;
     }
 
-    public async Task<OrderEntity?> UpdateOrderAsync(long orderId, OrderUpdateModel updatedOrder)
+    public async Task<OrderEntity> UpdateOrderAsync(long orderId, OrderUpdateModel updatedOrder)
     {
         var order = await _orderRepository.GetOrderAsync(orderId);
-        if (order == null) return null;
+        if (order == null)
+            throw new NotFoundException("Order", orderId);
         
         order.OrderName = updatedOrder.OrderName;
         order.Status = updatedOrder.Status;
@@ -126,7 +142,7 @@ public class OrderService
         order.Item.ModifiedAt = DateTime.UtcNow;
         
         _orderRepository.UpdateOrder(order);
-        await _orderRepository.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync();
 
         return order;
     }

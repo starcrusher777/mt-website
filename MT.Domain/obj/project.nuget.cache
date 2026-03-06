@@ -1,13 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "yY3LZafxVuM=",
+  "dgSpecHash": "49oCM49FCRQ=",
   "success": true,
-  "projectFilePath": "D:\\Programming\\CSharp\\Last update\\MerchTrade\\MT.Domain\\MT.Domain.csproj",
+  "projectFilePath": "D:\\Programming\\GitHub\\mt-website\\MT.Domain\\MT.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.19\\microsoft.netcore.app.ref.8.0.19.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.19\\microsoft.windowsdesktop.app.ref.8.0.19.nupkg.sha512",
-    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.19\\microsoft.aspnetcore.app.ref.8.0.19.nupkg.sha512",
-    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.19\\microsoft.netcore.app.host.win-x64.8.0.19.nupkg.sha512"
+    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.19\\microsoft.aspnetcore.app.ref.8.0.19.nupkg.sha512"
   ],
   "logs": []
 }

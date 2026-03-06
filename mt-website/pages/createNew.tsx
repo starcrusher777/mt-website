@@ -25,7 +25,7 @@ export default function CreateNew() {
 
         const userId = localStorage.getItem('userid') ?? localStorage.getItem('userId');
         if (!userId) {
-            alert('Войдите в аккаунт, чтобы разместить объявление.');
+            alert('Please log in to create a listing.');
             router.push('/auth');
             return;
         }
@@ -55,16 +55,16 @@ export default function CreateNew() {
 
             if (!response.ok) {
                 const errorText = await response.text();
-                throw new Error(errorText || 'Ошибка сервера');
+                throw new Error(errorText || 'Server error');
             }
 
             const result = await response.json();
-            console.log('Объявление создано:', result);
+            console.log('Listing created:', result);
             await router.push('/');
         } catch (error: unknown) {
-            console.error('Ошибка:', error);
-            const message = error instanceof Error ? error.message : 'Не удалось создать объявление';
-            alert(`Ошибка при создании объявления: ${message}`);
+            console.error('Error:', error);
+            const message = error instanceof Error ? error.message : 'Failed to create listing';
+            alert(`Error creating listing: ${message}`);
         } finally {
             setLoading(false);
         }
@@ -73,25 +73,25 @@ export default function CreateNew() {
     if (!authChecked) {
         return (
             <div className="form-container">
-                <p className="form-title">Проверка входа...</p>
+                <p className="form-title">Checking login...</p>
             </div>
         );
     }
 
     return (
         <div className="form-container">
-            <h1 className="form-title">Создать объявление</h1>
+            <h1 className="form-title">Create listing</h1>
             <form onSubmit={handleSubmit} className="form" encType="multipart/form-data">
                 <input
                     type="text"
-                    placeholder="Название"
+                    placeholder="Title"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="form-input"
                     required
                 />
                 <textarea
-                    placeholder="Описание"
+                    placeholder="Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     className="form-textarea"
@@ -99,7 +99,7 @@ export default function CreateNew() {
                 />
                 <input
                     type="number"
-                    placeholder="Цена (₽)"
+                    placeholder="Price"
                     min="0"
                     step="any"
                     value={price}
@@ -108,7 +108,7 @@ export default function CreateNew() {
                     required
                 />
                 <label className="form-label">
-                    Фото товара (можно несколько)
+                    Product photos (multiple allowed)
                     <input
                         type="file"
                         multiple
@@ -120,9 +120,9 @@ export default function CreateNew() {
                 </label>
                 <div className="form-actions">
                     <button type="submit" className="form-button" disabled={loading}>
-                        {loading ? 'Отправка...' : 'Создать объявление'}
+                        {loading ? 'Submitting...' : 'Create listing'}
                     </button>
-                    <Link href="/" className="form-link">Отмена</Link>
+                    <Link href="/" className="form-link">Cancel</Link>
                 </div>
             </form>
         </div>
