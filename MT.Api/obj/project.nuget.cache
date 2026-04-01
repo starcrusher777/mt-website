@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "b7R5NGxLsXE=",
+  "dgSpecHash": "G9C4URZTdWw=",
   "success": true,
   "projectFilePath": "D:\\Programming\\GitHub\\mt-website\\MT.Api\\MT.Api.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.4\\microsoft.entityframeworkcore.abstractions.9.0.4.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.4\\microsoft.entityframeworkcore.analyzers.9.0.4.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.entityframeworkcore.design\\9.0.4\\microsoft.entityframeworkcore.design.9.0.4.nupkg.sha512",
+    "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\9.0.4\\microsoft.entityframeworkcore.inmemory.9.0.4.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.4\\microsoft.entityframeworkcore.relational.9.0.4.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\9.0.4\\microsoft.entityframeworkcore.sqlserver.9.0.4.nupkg.sha512",
     "C:\\Users\\starcrusher777\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\10.0.0-preview.3.25171.6\\microsoft.entityframeworkcore.tools.10.0.0-preview.3.25171.6.nupkg.sha512",

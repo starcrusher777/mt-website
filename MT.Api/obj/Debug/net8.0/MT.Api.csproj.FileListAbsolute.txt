@@ -573,3 +573,4 @@ D:\Programming\GitHub\mt-website\MT.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Mv
 D:\Programming\GitHub\mt-website\MT.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 D:\Programming\GitHub\mt-website\MT.Api\bin\Debug\net8.0\MT.Contracts.dll
 D:\Programming\GitHub\mt-website\MT.Api\bin\Debug\net8.0\MT.Contracts.pdb
+D:\Programming\GitHub\mt-website\MT.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
