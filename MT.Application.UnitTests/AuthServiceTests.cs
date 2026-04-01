@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using MT.Application.Services;
 using MT.Domain.Entities;
+using MT.Domain.Enums;
 using MT.Domain.Interfaces;
 using MT.Infrastructure.Models;
 using NSubstitute;
@@ -37,7 +38,7 @@ public class AuthServiceTests
     [Fact]
     public async Task LoginAsync_WhenValidCredentials_ReturnsTokenAndUser()
     {
-        var user = new UserEntity { Id = 1, Email = "a@b.com", Username = "user" };
+        var user = new UserEntity { Id = 1, Email = "a@b.com", Username = "user", Role = UserRole.User };
         _authRepository.LoginAsync(Arg.Any<string>(), Arg.Any<string>()).Returns(user);
         var sut = new AuthService(_authRepository, _unitOfWork, Substitute.For<AutoMapper.IMapper>(), _config);
         var loginModel = new LoginModel { Email = "a@b.com", Password = "pass" };

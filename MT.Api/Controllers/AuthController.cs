@@ -39,7 +39,7 @@ public class AuthController : ControllerBase
             Secure = true,
             Expires = DateTime.UtcNow.AddMinutes(30)
         });
-        return Ok(new { message = "Login successful", username = user.Username, userid = user.Id, token });
+        return Ok(new { message = "Login successful", username = user.Username, userid = user.Id, role = user.Role.ToString(), token });
     }
 
     [HttpPost]

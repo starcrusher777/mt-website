@@ -1,4 +1,5 @@
 using FluentValidation;
+using MT.Domain.Enums;
 using MT.Infrastructure.Models;
 
 namespace MerchTrade.Validators;
@@ -7,6 +8,7 @@ public class UserModelValidator : AbstractValidator<UserModel>
 {
     public UserModelValidator()
     {
+        RuleFor(x => x.Role).IsInEnum();
         RuleFor(x => x.Username)
             .NotEmpty().WithMessage("Username is required.")
             .MaximumLength(100);

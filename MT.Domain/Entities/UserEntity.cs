@@ -1,9 +1,12 @@
-﻿namespace MT.Domain.Entities;
+using MT.Domain.Enums;
+
+namespace MT.Domain.Entities;
 
 public class UserEntity: BaseEntity
 {
     public string Username { get; set; }
     public string Email { get; set; }
+    public UserRole Role { get; set; }
     public byte[] PasswordHash { get; set; }
     public byte[] PasswordSalt { get; set; }
     public bool isBanned { get; set; }

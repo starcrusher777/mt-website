@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MT.Application.Services;
 using MT.Contracts.Common;
@@ -45,6 +46,7 @@ public class ItemController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> CreateItem(ItemModel item)
     {
         item.CreatedAt = DateTime.UtcNow;

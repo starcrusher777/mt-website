@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MT.Application.Services;
 using MT.Contracts.Common;
+using MT.Domain.Authorization;
 using MT.Infrastructure.Models;
 
 namespace MerchTrade.Controllers;
@@ -23,6 +24,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = AppRoles.ModeratorOrAdministrator)]
     public async Task<IActionResult> GetUsers([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
         if (pageSize <= 0) pageSize = 20;
@@ -47,6 +49,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = AppRoles.Administrator)]
     public async Task<IActionResult> CreateUser(UserModel user)
     {
         user.CreatedAt = DateTime.UtcNow;

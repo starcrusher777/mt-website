@@ -1,17 +1,20 @@
+using System.Security.Claims;
+using System.Text;
 using FluentValidation;
+using MerchTrade.Auth;
 using MerchTrade.Filters;
 using MerchTrade.Middleware;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MT.Application.Services;
 using MT.Domain.Interfaces;
 using MT.Infrastructure.Data;
 using MT.Infrastructure.Data.Repositories;
 using MT.Infrastructure.Maps.Profiles;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace MerchTrade;
 
@@ -66,31 +69,48 @@ public class Program
         });
         
         builder.Services.AddSwaggerGen();
-        builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+        if (builder.Environment.IsEnvironment("Testing"))
+        {
+            builder.Services.AddDbContext<ApplicationContext>(options =>
+                options.UseInMemoryDatabase("MerchTradeIntegrationTests"));
+        }
+        else
+        {
+            builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+        }
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddAutoMapper(typeof(OrderCreateFormProfile));
         builder.Services.AddAutoMapper(typeof(UserProfile));
         builder.Services.AddAutoMapper(typeof(UserUpdateProfile));
         builder.Services.AddAutoMapper(typeof(OrderUpdateProfile));
         
-        builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
+        if (builder.Environment.IsEnvironment("Testing"))
+        {
+            builder.Services.AddAuthentication("Test")
+                .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>("Test", _ => { });
+        }
+        else
+        {
+            builder.Services.AddAuthentication(options =>
                 {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                    ValidAudience = builder.Configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-                };
-            });
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                        ValidAudience = builder.Configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                        RoleClaimType = ClaimTypes.Role
+                    };
+                });
+        }
 
         var app = builder.Build();
         
@@ -107,7 +127,6 @@ public class Program
         
         app.UseStaticFiles();
         app.MapControllers();
-        app.UseAuthorization();
         
         app.Run();
     }

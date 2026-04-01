@@ -1,9 +1,12 @@
-﻿namespace MT.Infrastructure.Models;
+using MT.Domain.Enums;
+
+namespace MT.Infrastructure.Models;
 
 public class UserModel : BaseModel
 {
     
     public string Username { get; set; }
+    public UserRole Role { get; set; }
     public string Password { get; set; }
     
     public ContactsModel Contacts { get; set; }

@@ -4,6 +4,7 @@ using System.Text;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using MT.Domain.Entities;
+using MT.Domain.Enums;
 using MT.Domain.Interfaces;
 using MT.Infrastructure.Models;
 
@@ -29,7 +30,8 @@ public class AuthService
         var user = new UserEntity
         {
             Username = registerModel.Username,
-            Email = registerModel.Email
+            Email = registerModel.Email,
+            Role = UserRole.User
         };
         
         await _authRepository.RegisterAsync(user, registerModel.Password);
@@ -52,7 +54,8 @@ public class AuthService
         {
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Role, user.Role.ToString())
         };
 
         var tokenDescriptor = new SecurityTokenDescriptor
